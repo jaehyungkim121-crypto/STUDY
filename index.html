@@ -10,6 +10,7 @@
   :root{
     --mint:#00C7A9; --mint-deep:#009E86; --mint-ink:#00715F;
     --lime:#E2F15E;
+    --blue-deep:#1B45C4;
     --ink:#1A2E2B; --ink-soft:#3C534F;
     --bg:#F2FBF8; --surface:#FFFFFF; --surface-2:#F6FAF9;
     --line:#E2EEEA; --line-strong:#CDE3DD;
@@ -119,6 +120,7 @@
     background:#E6F8F3; color:var(--mint-deep); font-size:20px; font-weight:800;
   }
   .target-card h3{font-size:18px; font-weight:800; letter-spacing:-.02em;}
+  .target-card h3 .tc-key{color:var(--blue-deep); font-weight:800;}
   .target-card p{font-size:13.5px; color:var(--muted); line-height:1.55;}
   .target-card .go{
     margin-top:auto; font-size:13px; font-weight:700; color:var(--mint-ink);
@@ -841,23 +843,23 @@
         <small>본인 유형을 선택하면, 지금 바로 해야 할 일부터 보여드립니다.</small>
       </h2>
       <div class="target-grid" id="targetGrid">
-        <button class="target-card" data-target="returning">
-          <h3>복직직원 온보딩</h3>
-          <p>복직 후 상품판매권한과 자격증 보수교육 이수 여부를 확인합니다.</p>
-          <span class="go">시작하기</span>
-        </button>
         <button class="target-card" data-target="transfer">
-          <h3>본부부서 → 영업점 전입직원 온보딩</h3>
+          <h3><span class="tc-key">본부부서 → 영업점</span> 전입직원 온보딩</h3>
           <p>영업점 전입 전 판매권한과 자격증 보수교육 상태를 점검합니다.</p>
           <span class="go">시작하기</span>
         </button>
+        <button class="target-card" data-target="returning">
+          <h3><span class="tc-key">복직직원</span> 온보딩</h3>
+          <p>복직 후 상품판매권한과 자격증 보수교육 이수 여부를 확인합니다.</p>
+          <span class="go">시작하기</span>
+        </button>
         <button class="target-card" data-target="newbie">
-          <h3>신입행원 온보딩</h3>
+          <h3><span class="tc-key">신입행원</span> 온보딩</h3>
           <p>영업점 근무 시작 전 기본 판매교육을 확인합니다.</p>
           <span class="go">시작하기</span>
         </button>
         <button class="target-card" data-target="peaktimer">
-          <h3>신규 채용 피크타이머 온보딩</h3>
+          <h3>신규 채용 <span class="tc-key">피크타이머</span> 온보딩</h3>
           <p>영업점 업무 수행 전 필요한 기본 판매교육을 확인합니다.</p>
           <span class="go">시작하기</span>
         </button>
