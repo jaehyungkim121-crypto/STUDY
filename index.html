@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <!-- suggested filename: onboarding_sales_authority_guide.html -->
-<!-- iM뱅크 영업점 근무 전 판매권한 체크가이드 / Internal Onboarding Guide -->
+<!-- iM뱅크 영업점 온보딩 가이드 / Internal Onboarding Guide -->
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>영업점 근무 전 판매권한 체크가이드 · iM뱅크</title>
+<title>영업점 온보딩 가이드 · iM뱅크</title>
 <style>
   :root{
     --mint:#00C7A9; --mint-deep:#009E86; --mint-ink:#00715F;
@@ -160,17 +160,26 @@
 
   /* 격려 메시지 */
   .cheer{
-    margin-top:18px; border-radius:var(--r-lg);
-    background:linear-gradient(135deg,#E6F8F3 0%, #F6FCEC 100%);
-    border:1px solid #CDE7DF; padding:18px 20px;
-    display:flex; gap:14px; align-items:flex-start; box-shadow:var(--shadow);
+    position:relative; margin-top:18px; border-radius:var(--r-lg); overflow:hidden;
+    background:linear-gradient(135deg,#DBF5EC 0%, #EFFBDD 100%);
+    border:1.5px solid var(--mint); padding:22px 24px 22px 26px;
+    display:flex; gap:18px; align-items:center;
+    box-shadow:0 6px 22px rgba(0,199,169,.16);
   }
-  .cheer .ci{flex:0 0 auto; width:40px; height:40px; border-radius:13px;
-    background:#fff; border:1px solid #CDE7DF; display:grid; place-items:center;
-    font-size:19px;}
-  .cheer .ct{font-size:11.5px; font-weight:800; color:var(--mint-deep);
-    letter-spacing:.04em; margin-bottom:5px;}
-  .cheer p{font-size:14.8px; line-height:1.7; color:var(--ink); font-weight:500;}
+  .cheer::before{content:""; position:absolute; left:0; top:0; bottom:0; width:6px;
+    background:linear-gradient(180deg,var(--mint),var(--mint-deep));}
+  .cheer .ci{flex:0 0 auto; width:52px; height:52px; border-radius:16px;
+    background:#fff; border:1.5px solid var(--mint); display:grid; place-items:center;
+    font-size:26px; box-shadow:0 4px 12px rgba(0,199,169,.22);}
+  .cheer .ct{display:inline-block; font-size:12px; font-weight:800; color:#fff;
+    background:var(--mint-deep); letter-spacing:.04em; margin-bottom:9px;
+    padding:5px 13px; border-radius:999px;}
+  .cheer p{font-size:16px; line-height:1.68; color:var(--ink); font-weight:600;}
+  @media (max-width:680px){
+    .cheer{align-items:flex-start; padding:18px 18px 18px 22px; gap:13px;}
+    .cheer .ci{width:44px; height:44px; font-size:22px;}
+    .cheer p{font-size:15px;}
+  }
 
   /* intro note */
   .intro-note{
@@ -194,12 +203,21 @@
   .ch-bar > i{display:block; height:100%; width:0; background:var(--mint);
     border-radius:999px; transition:width .3s ease;}
   .ch-item{
-    display:flex; align-items:flex-start; gap:11px; padding:11px 12px;
-    border-radius:11px; font-size:14.5px; cursor:pointer; transition:.12s;
-    user-select:none;
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:8px 10px 8px 12px; border-radius:11px; transition:.12s;
   }
   .ch-item:hover{background:var(--surface-2);}
+  .ch-check{
+    display:flex; align-items:flex-start; gap:11px; flex:1 1 auto; min-width:0;
+    font-size:14.5px; cursor:pointer; user-select:none;
+  }
   .ch-item input{position:absolute; opacity:0; width:0; height:0;}
+  .ch-go{
+    flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--mint-ink);
+    background:#E6F8F3; border:1px solid #CDE7DF; border-radius:999px;
+    padding:6px 13px; white-space:nowrap; transition:.14s;
+  }
+  .ch-go:hover{background:var(--mint); color:#fff; border-color:var(--mint);}
   .ch-box{
     flex:0 0 auto; width:21px; height:21px; border-radius:7px; margin-top:1px;
     border:2px solid var(--line-strong); background:#fff; display:grid;
@@ -262,6 +280,9 @@
   /* ───── Generic card grids ───── */
   .grid-cards{display:grid; gap:13px; margin-top:20px;
     grid-template-columns:repeat(auto-fill,minmax(240px,1fr));}
+  .grid-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+  @media (max-width:760px){ .grid-3{grid-template-columns:repeat(2,minmax(0,1fr));} }
+  @media (max-width:480px){ .grid-3{grid-template-columns:1fr;} }
   .mini{
     background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md);
     padding:18px; box-shadow:var(--shadow); position:relative;
@@ -271,6 +292,11 @@
     line-height:1.4;}
   .mini .pill{margin-top:12px; display:inline-block; font-size:11px; font-weight:700;
     color:var(--mint-ink); background:#E6F8F3; padding:4px 9px; border-radius:999px;}
+  .mini .mini-go{margin-top:12px; display:inline-flex; align-items:center; gap:6px;
+    font-size:12px; font-weight:800; color:#fff; background:var(--mint);
+    padding:7px 13px; border-radius:999px; transition:.14s;}
+  .mini .mini-go::after{content:"↗"; font-weight:800;}
+  .mini .mini-go:hover{background:var(--mint-deep);}
 
   .info-card{
     background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md);
@@ -293,6 +319,28 @@
     line-height:1.6;
   }
 
+  /* 수강 경로 */
+  .edu-path{
+    margin-top:16px; display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+    background:var(--surface); border:1px solid var(--line-strong); border-left:3px solid var(--mint);
+    border-radius:var(--r-sm); padding:12px 15px;
+  }
+  .edu-path .ep-label{flex:0 0 auto; font-size:11.5px; font-weight:800; color:#fff;
+    background:var(--mint-deep); padding:4px 10px; border-radius:999px; letter-spacing:.02em;}
+  .edu-path .ep-route{font-size:13.5px; font-weight:700; color:var(--ink); line-height:1.6;}
+  .edu-path .ep-route i{font-style:normal; color:var(--mint); font-weight:800; margin:0 3px;}
+  .edu-path-visit{margin-top:10px;}
+  /* ACTION 카드 내 경로 */
+  .a-path{
+    margin-top:13px; display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+    background:var(--surface-2); border:1px solid var(--line); border-radius:10px;
+    padding:9px 12px;
+  }
+  .a-path .ap-label{flex:0 0 auto; font-size:11px; font-weight:800; color:var(--mint-ink);
+    background:#E6F8F3; padding:3px 9px; border-radius:999px;}
+  .a-path .ap-route{font-size:12.8px; font-weight:600; color:var(--ink-soft); line-height:1.55;}
+  .a-path .ap-route i{font-style:normal; color:var(--mint); font-weight:800; margin:0 2px;}
+
   /* ───── How-to (timeline) ───── */
   .howto-block{margin-top:22px;}
   .howto-grid{display:grid; gap:18px; grid-template-columns:280px 1fr; align-items:start;}
@@ -307,6 +355,13 @@
   .howto-summary .chips{margin-top:14px; display:flex; flex-wrap:wrap; gap:6px;}
   .howto-summary .chip{font-size:11.5px; font-weight:600; background:rgba(255,255,255,.12);
     border:1px solid rgba(255,255,255,.18); padding:5px 10px; border-radius:999px;}
+  .howto-summary .howto-go{
+    margin-top:16px; display:inline-flex; align-items:center; gap:7px;
+    background:var(--mint); color:#06241d; font-weight:800; font-size:13.5px;
+    padding:11px 16px; border-radius:11px; transition:.14s; white-space:nowrap;
+  }
+  .howto-summary .howto-go:hover{background:var(--lime); color:#1A2E2B;}
+  .howto-summary .howto-go::after{content:"↗"; font-weight:800;}
   .steps-list{position:relative; padding-left:8px;}
   .step{position:relative; padding:0 0 20px 40px;}
   .step:last-child{padding-bottom:0;}
@@ -371,6 +426,8 @@
   .faq-a{max-height:0; overflow:hidden; transition:max-height .26s ease;}
   .faq-a .inner{padding:0 18px 18px; font-size:14px; color:var(--ink-soft);
     line-height:1.7;}
+  .faq-a .inner a{color:var(--mint-ink); font-weight:700; text-decoration:underline;}
+  .faq-a .inner a:hover{color:var(--mint-deep);}
   .faq-empty{display:none; text-align:center; padding:40px 0; color:var(--muted);
     font-size:14px;}
 
@@ -390,7 +447,7 @@
 
   .hidden{display:none !important;}
 
-  /* ═════ 접속 매뉴얼 트리거 ═════ */
+  /* ═════ Bazle 안내 트리거 ═════ */
   .nav-manual{
     margin:7px 0 7px auto; padding:8px 14px; border:0; cursor:pointer;
     background:var(--mint); color:#fff; font-weight:700; font-size:13px;
@@ -451,6 +508,54 @@
   .m-intro .mi-ic{flex:0 0 auto; width:22px; height:22px; border-radius:7px;
     background:var(--warn); color:#fff; display:grid; place-items:center;
     font-size:13px; font-weight:800;}
+
+  /* ═════ Bazle 안내 카드 ═════ */
+  .bz-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;}
+  .bz-card{background:var(--surface); border:1px solid var(--line);
+    border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow);
+    display:flex; flex-direction:column;}
+  .bz-head{display:flex; align-items:center; gap:13px; padding:18px 20px;
+    border-bottom:1px solid var(--line); background:var(--surface-2);}
+  .bz-ic{flex:0 0 auto; width:44px; height:44px; border-radius:13px;
+    background:#E6F8F3; display:grid; place-items:center; font-size:22px;}
+  .bz-head h3{font-size:17px; font-weight:800; letter-spacing:-.02em;}
+  .bz-head .bz-sub{display:block; margin-top:2px; font-size:12.5px;
+    color:var(--muted); font-weight:600;}
+  .bz-body{padding:20px; display:flex; flex-direction:column; gap:16px; flex:1;}
+  .bz-steps{display:flex; flex-direction:column; gap:11px;}
+  .bz-step{display:flex; gap:11px; align-items:flex-start; font-size:14px;
+    color:var(--ink-soft); line-height:1.5;}
+  .bz-step b{color:var(--ink);}
+  .bz-no{flex:0 0 auto; width:22px; height:22px; border-radius:50%;
+    background:#E6F8F3; color:var(--mint-deep); font-size:12px; font-weight:800;
+    display:grid; place-items:center; margin-top:1px;}
+  .bz-qr-row{display:flex; gap:18px; align-items:center;}
+  .bz-qr{flex:0 0 auto; text-align:center;}
+  .bz-qr img{display:block; width:150px; height:150px; border-radius:12px;
+    border:1px solid var(--line-strong); padding:8px; background:#fff;}
+  .bz-qr-cap{display:block; margin-top:8px; font-size:12px; font-weight:700;
+    color:var(--mint-deep);}
+  .bz-qr-guide{flex:1 1 0; min-width:0; display:flex; flex-direction:column; gap:13px;}
+  .bz-qr-guide p{font-size:14px; color:var(--ink-soft); line-height:1.55;}
+  .bz-qr-guide b{color:var(--ink);}
+  .bz-linkbox{margin-top:auto; background:var(--surface-2); border:1px solid var(--line);
+    border-radius:var(--r-md); padding:13px 14px; display:flex; flex-wrap:wrap;
+    align-items:center; gap:8px 10px;}
+  .bz-linklabel{flex:0 0 100%; font-size:11.5px; font-weight:800;
+    color:var(--mint-ink); letter-spacing:.02em;}
+  .bz-url{flex:1 1 auto; min-width:0; font-size:13.5px; font-weight:700;
+    color:var(--mint-ink); word-break:break-all; line-height:1.45;}
+  .bz-url:hover{text-decoration:underline;}
+  .bz-copy{flex:0 0 auto; background:var(--ink); color:#fff; border:0;
+    padding:7px 14px; border-radius:9px; font-size:12.5px; font-weight:700;
+    transition:.14s;}
+  .bz-copy:hover{background:#0c1d1a;}
+  .bz-copy.done{background:var(--mint-deep);}
+  @media (max-width:760px){
+    .bz-grid{grid-template-columns:1fr;}
+    .bz-qr-row{flex-direction:column; align-items:stretch; gap:14px;}
+    .bz-qr{align-self:center;}
+  }
 
   /* 매뉴얼 스텝 */
   .mstep{margin-bottom:14px; background:var(--surface); border:1px solid var(--line);
@@ -634,27 +739,37 @@
   .contact-cta:hover{background:#0c1d1a;}
   .contact-cta .cc-q{display:grid; place-items:center; width:20px; height:20px;
     border-radius:50%; background:var(--mint); color:#fff; font-size:12px; font-weight:900;}
-  .contact-table{display:grid; gap:9px;}
+  .contact-table{display:grid; gap:8px;}
+  .cg-head{display:flex; align-items:center; gap:10px; margin-top:8px;
+    padding:2px 2px 0;}
+  .cg-head:first-child{margin-top:0;}
+  .cg-part{flex:0 0 auto; font-size:11.5px; font-weight:800; color:#fff;
+    background:var(--mint-deep); padding:4px 11px; border-radius:999px; letter-spacing:.02em;}
+  .cg-name{font-size:14px; font-weight:800; color:var(--ink); letter-spacing:-.02em;}
+  .cg-name i{font-style:normal; font-size:12px; font-weight:600; color:var(--muted);
+    margin-left:7px;}
   .contact-row{
-    display:grid; grid-template-columns:1.4fr 1fr 0.8fr; gap:12px; align-items:center;
+    display:grid; grid-template-columns:1fr 1.1fr 0.9fr; gap:12px; align-items:center;
     background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md);
-    padding:14px 16px;
+    padding:13px 16px;
   }
   .contact-row.head{background:var(--surface-2); border-color:var(--line-strong);
     font-size:12px; font-weight:800; color:var(--muted); padding:11px 16px;}
-  .contact-row .cr-name{font-size:14.5px; font-weight:700; letter-spacing:-.02em;}
-  .contact-row .cr-name span{display:block; font-size:12px; font-weight:500;
-    color:var(--muted); margin-top:2px;}
-  .contact-row .cr-dept{font-size:13.5px; color:var(--ink-soft);}
+  .contact-row.head span:last-child{text-align:center;}
+  .contact-row .cr-dept{font-size:14px; font-weight:700; color:var(--ink);
+    letter-spacing:-.02em;}
+  .contact-row .cr-prod{font-size:13.5px; color:var(--ink-soft);}
   .contact-row .cr-tel{font-size:14px; font-weight:800; color:var(--mint-ink);
-    text-align:right; white-space:nowrap;}
+    text-align:center; white-space:nowrap;}
   .contact-row .cr-tel.todo{color:var(--muted-2); font-weight:600;}
   @media (max-width:680px){
     .contact-row,.contact-row.head{grid-template-columns:1fr; gap:4px; text-align:left;}
     .contact-row .cr-tel{text-align:left;}
     .contact-row.head{display:none;}
-    .contact-row .cr-dept::before{content:"담당 부서 "; color:var(--muted-2); font-weight:700;}
-    .contact-row .cr-tel::before{content:"내선 "; color:var(--muted-2); font-weight:700; font-size:12px;}
+    .cg-name{font-size:13.5px;}
+    .contact-row .cr-dept::before{content:"부서 "; color:var(--muted-2); font-weight:700; font-size:12px;}
+    .contact-row .cr-prod::before{content:"상품 "; color:var(--muted-2); font-weight:700; font-size:12px;}
+    .contact-row .cr-tel::before{content:"연락처 "; color:var(--muted-2); font-weight:700; font-size:12px;}
   }
 
   @media (max-width:720px){
@@ -665,20 +780,18 @@
     .sel-bar .actions{margin-left:0; width:100%;}
     header.site{padding:28px 0 22px;}
 
-    /* 접속 매뉴얼 모바일 */
+    /* 접속 매뉴얼 · Bazle 안내 모달 모바일 */
     .modal-overlay{padding:0;}
     .modal-box{border-radius:0; min-height:100%; max-width:100%;}
     .modal-body{padding:18px 14px 28px;}
     .mstep-grid, .mstep-grid.rev{grid-template-columns:1fr; gap:14px; padding:16px;}
     .pt-tabs .pt-tab{font-size:8.5px;}
-    .manual-callout{flex-direction:column; align-items:flex-start;}
-    .manual-callout .mc-btn{width:100%; justify-content:center;}
   }
 
   /* ───── Print ───── */
   @media print{
     nav.steps, #target-select, #toTop, .no-print, .faq-search, .chips-row,
-    .modal-overlay, .manual-callout, .nav-manual, .contact-cta,
+    .modal-overlay, .nav-manual, .contact-cta,
     .sel-bar .actions{display:none !important;}
     header.site{background:#fff; padding:0 0 16px;}
     body{background:#fff;}
@@ -702,7 +815,7 @@
       <span class="logo">iM</span>
       <b>iM뱅크</b>
     </div>
-    <h1>영업점 근무 전 판매권한 체크가이드</h1>
+    <h1>영업점 온보딩 가이드</h1>
     <p class="sub">상품판매교육 · 자격증 보수교육 · 교육비 신청까지 한 번에 확인하세요</p>
   </div>
 </header>
@@ -715,7 +828,7 @@
     <a href="#sec-maintenance" data-sec="sec-maintenance" class="nav-guide nav-maint hidden">자격증 보수교육</a>
     <a href="#sec-howto" data-sec="sec-howto" class="nav-guide nav-maint hidden">수강방법</a>
     <a href="#sec-faq" data-sec="sec-faq" class="nav-guide hidden">FAQ</a>
-    <button type="button" class="nav-manual" id="navManual">📘 접속매뉴얼</button>
+    <button type="button" class="nav-manual" id="navManual">📘 Bazle 안내</button>
   </div>
 </nav>
 
@@ -724,28 +837,28 @@
 
     <!-- 1. 대상자 선택 -->
     <section id="target-select">
-      <h2 class="q">누구를 위한 안내인가요?
+      <h2 class="q">어떤 경우에 해당하시나요?
         <small>본인 유형을 선택하면, 지금 바로 해야 할 일부터 보여드립니다.</small>
       </h2>
       <div class="target-grid" id="targetGrid">
-        <button class="target-card" data-target="newbie">
-          <h3>신입행원 온보딩</h3>
-          <p>영업점 근무 시작 전 기본 판매교육을 확인합니다.</p>
-          <span class="go">시작하기</span>
-        </button>
         <button class="target-card" data-target="returning">
           <h3>복직직원 온보딩</h3>
           <p>복직 후 상품판매권한과 자격증 보수교육 이수 여부를 확인합니다.</p>
           <span class="go">시작하기</span>
         </button>
-        <button class="target-card" data-target="peaktimer">
-          <h3>신규 채용 피크타이머 온보딩</h3>
-          <p>영업점 업무 수행 전 필요한 기본 판매교육을 확인합니다.</p>
-          <span class="go">시작하기</span>
-        </button>
         <button class="target-card" data-target="transfer">
           <h3>본부부서 → 영업점 전입직원 온보딩</h3>
           <p>영업점 전입 전 판매권한과 자격증 보수교육 상태를 점검합니다.</p>
+          <span class="go">시작하기</span>
+        </button>
+        <button class="target-card" data-target="newbie">
+          <h3>신입행원 온보딩</h3>
+          <p>영업점 근무 시작 전 기본 판매교육을 확인합니다.</p>
+          <span class="go">시작하기</span>
+        </button>
+        <button class="target-card" data-target="peaktimer">
+          <h3>신규 채용 피크타이머 온보딩</h3>
+          <p>영업점 업무 수행 전 필요한 기본 판매교육을 확인합니다.</p>
           <span class="go">시작하기</span>
         </button>
       </div>
@@ -794,23 +907,26 @@
       <!-- 상품교육 -->
       <section id="sec-product" class="sec-gap">
         <p class="sec-eyebrow">상품교육</p>
-        <h2 class="sec-title">금융상품숙지의무 6개 강의</h2>
+        <h2 class="sec-title" id="productTitle">금융상품숙지의무 6개 PART</h2>
         <p class="sec-desc">영업점에서 금융상품을 판매하기 위해 기본적으로 이수해야 하는 상품별 숙지교육입니다.
-          아래 6개 강의는 모두 <b>상품 판매 전 확인</b>이 필요합니다.</p>
+          아래 6개 PART는 모두 <b>상품 판매 전 확인</b>이 필요합니다.</p>
+        <div class="edu-path"><span class="ep-label">금융상품숙지의무</span>
+          <span class="ep-route">Bazle 접속 <i>›</i> 필수교육 <i>›</i> (전직원) 금융상품숙지의무 <i>›</i> Level1 금융상품숙지의무</span></div>
+        <div class="edu-path edu-path-visit hidden" id="visitEduNote"><span class="ep-label">방문판매인력교육</span>
+          <span class="ep-route">Bazle 접속 <i>›</i> 필수교육 <i>›</i> (전직원) 방문판매인력교육</span></div>
         <div class="alert info hidden" id="ptProductNote"><span class="ai">P</span>
-          <div>피크타이머는 아래 6개 강의 중 <b>강의 1(수신 상품 + 신용카드 상품)</b>만 이수하면 됩니다.
-          추가로 신규 출시 신상품을 판매하는 경우 <b>신상품 교육</b>을 별도로 수강하세요.
-          (ETF 상품은 판매하지 않으므로 ETF 교육은 필요하지 않습니다.)</div></div>
-        <div class="grid-cards">
-          <div class="mini"><span class="num">강의 1</span><h4>수신 상품 + 신용카드 상품</h4><span class="pill">상품 판매 전 확인 필요</span></div>
-          <div class="mini"><span class="num">강의 2</span><h4>신탁 + 퇴직연금 + 일임형 ISA</h4><span class="pill">상품 판매 전 확인 필요</span></div>
-          <div class="mini"><span class="num">강의 3</span><h4>펀드</h4><span class="pill">상품 판매 전 확인 필요</span></div>
-          <div class="mini"><span class="num">강의 4</span><h4>개인여신상품 + 기업여신상품</h4><span class="pill">상품 판매 전 확인 필요</span></div>
-          <div class="mini"><span class="num">강의 5</span><h4>외환 상품 + 자금운용상품</h4><span class="pill">상품 판매 전 확인 필요</span></div>
-          <div class="mini"><span class="num">강의 6</span><h4>방카슈랑스</h4><span class="pill">상품 판매 전 확인 필요</span></div>
+          <div>피크타이머는 아래 PART 중 <b>PART1(수신 상품 + 신용카드 상품)</b>만 이수하면 됩니다.
+          그 외 상품은 판매하지 않으므로 추가 교육은 필요하지 않습니다.</div></div>
+        <div class="grid-cards grid-3" id="lectureGrid">
+          <div class="mini" data-lec="1"><span class="num">PART1</span><h4>수신 상품 + 신용카드 상품</h4><a class="mini-go" href="http://bazle.imbank.co.kr" target="_blank" rel="noopener">강의 바로가기</a></div>
+          <div class="mini" data-lec="2"><span class="num">PART2</span><h4>신탁 + 퇴직연금</h4><a class="mini-go" href="http://bazle.imbank.co.kr" target="_blank" rel="noopener">강의 바로가기</a></div>
+          <div class="mini" data-lec="3"><span class="num">PART3</span><h4>펀드 + 일임형 ISA</h4><a class="mini-go" href="http://bazle.imbank.co.kr" target="_blank" rel="noopener">강의 바로가기</a></div>
+          <div class="mini" data-lec="4"><span class="num">PART4</span><h4>개인여신상품 + 기업여신상품</h4><a class="mini-go" href="http://bazle.imbank.co.kr" target="_blank" rel="noopener">강의 바로가기</a></div>
+          <div class="mini" data-lec="5"><span class="num">PART5</span><h4>외환 상품 + 자금운용상품</h4><a class="mini-go" href="http://bazle.imbank.co.kr" target="_blank" rel="noopener">강의 바로가기</a></div>
+          <div class="mini" data-lec="6"><span class="num">PART6</span><h4>방카슈랑스</h4><a class="mini-go" href="http://bazle.imbank.co.kr" target="_blank" rel="noopener">강의 바로가기</a></div>
         </div>
 
-        <div class="info-card" style="margin-top:22px;">
+        <div class="info-card" style="margin-top:22px;" id="newProdCard">
           <h4>신상품 · ETF 상품숙지교육은 별도 수강이 필요할 수 있습니다</h4>
           <ul>
             <li>특정 상품이 <b>신규로 출시</b>되는 경우, 해당 신상품 숙지의무교육을 별도로 수강해야 할 수 있습니다.</li>
@@ -835,27 +951,22 @@
         <div class="info-card" style="margin-top:22px;">
           <h4>펀드 · 파생상품투자권유자문인력</h4>
           <ul>
-            <li>2023년부터 관련 규정에 따라 <b>유지자격자는 매년 자격증 보수교육을 이수</b>해야 한다는 취지로 운영됩니다.</li>
-            <li>복직 전 또는 본부부서에서 영업점으로 전입하기 전에 <b>반드시 수강</b>하시기 바랍니다.</li>
+            <li>관련 협회 규정에 따라 <b>유지자격자는 매년 1회 이상 보수교육을 이수</b>해야 합니다.</li>
+            <li>복직 전 또는 본부부서에서 영업점으로 전입하기 전에 <b>반드시 수강</b>하세요.</li>
             <li>미이수 시 창구에서 금융투자상품 판매 진행이 <b>불가능</b>할 수 있습니다.</li>
+            <li>최종 대상 여부와 이수기한은 <b>사내 교육담당부서 또는 관련 협회 기준</b>에 따라 확인하세요.</li>
           </ul>
         </div>
 
         <div class="info-card">
           <h4>보험대리점 — 생명보험 · 손해보험 · 제3보험</h4>
           <ul>
-            <li>자격증 등록일로부터 <b>2년 경과 시마다</b> 자격증 보수교육 대상이 될 수 있습니다.</li>
-            <li>2년이 되는 날로부터 <b>6개월 이내</b>에 자격증별로 각각 자격증 보수교육을 이수해야 한다는 취지입니다.</li>
-            <li>복직과 동시에 방카 담당자로 지정되는 경우, 개별적으로 자격증 보수교육을 진행해야 합니다.</li>
-            <li>사전에 자격증 보수교육 대상 여부를 <b>이클린보험서비스</b> 등을 통해 확인하시기 바랍니다.</li>
+            <li>자격증 등록일을 기준으로 <b>2년마다</b> 보수교육 대상 여부가 발생합니다.</li>
+            <li>대상자는 2년이 되는 날부터 <b>6개월 이내</b>에 생명보험·손해보험·제3보험 등 보유 종목별 보수교육을 각각 이수하세요.</li>
+            <li>복직과 동시에 방카 담당자로 지정되는 경우, 개별적으로 보수교육을 이수하세요.</li>
+            <li>사전에 보수교육 대상 여부를 <b>이클린보험서비스</b> 등을 통해 확인하세요.</li>
+            <li>본인의 등록일과 보유 자격 종목에 따라 교육 대상 여부와 이수기한이 달라질 수 있습니다.</li>
           </ul>
-          <div style="margin-top:14px; display:grid; gap:10px;">
-            <div class="alert info"><span class="ai">2</span>
-              <div><b>CASE 2.</b> 본부 일괄 자격증 보수교육 대상자 명단에 본인이 포함되지 않은 경우 — 개인별 자격증 보수교육 기간이 도래했거나
-              영업점 방카 담당자로 지정될 예정이라면 <b>개별적으로</b> 자격증 보수교육을 진행해야 합니다.</div></div>
-            <div class="alert info"><span class="ai">3</span>
-              <div><b>CASE 3.</b> 복직과 동시에 방카 담당자로 지정되는 경우 — <b>개별적으로</b> 자격증 보수교육을 진행해야 합니다.</div></div>
-          </div>
         </div>
       </section>
 
@@ -877,6 +988,7 @@
                 <span class="chip">이러닝</span>
                 <span class="chip">조기 수료 필수</span>
               </div>
+              <a class="howto-go" href="https://www.kifin.or.kr" target="_blank" rel="noopener">금융투자교육원 바로가기</a>
             </div>
             <div class="steps-list">
               <div class="step"><span class="dot">1</span><h5>금융투자교육원 접속</h5>
@@ -905,8 +1017,8 @@
               <div class="chips">
                 <span class="chip">is.in.or.kr</span>
                 <span class="chip">PC 신청</span>
-                <span class="chip">예시 15,000원</span>
               </div>
+              <a class="howto-go" href="https://is.in.or.kr" target="_blank" rel="noopener">보험연수원 바로가기</a>
             </div>
             <div class="steps-list">
               <div class="step"><span class="dot">1</span><h5>보험연수원 접속</h5>
@@ -917,8 +1029,7 @@
               <div class="step"><span class="dot">3</span><h5>[보험대리점 수강신청] → [자격증 보수교육] 클릭</h5>
                 <p>화면 중앙에서 선택합니다.</p></div>
               <div class="step"><span class="dot">4</span><h5>[자격증 보수교육 대상 여부 확인] 클릭</h5></div>
-              <div class="step"><span class="dot">5</span><h5>해당 과목 클릭 후 수강 신청 및 결제</h5>
-                <div class="sub">교육비 예시 : <code>15,000원</code></div></div>
+              <div class="step"><span class="dot">5</span><h5>해당 과목 클릭 후 수강 신청 및 결제</h5></div>
               <div class="step"><span class="dot">6</span><h5>수강 완료 후 수료증 출력</h5></div>
             </div>
           </div>
@@ -976,22 +1087,22 @@
             <div class="basis-group">
               <h5>1. 금융상품숙지의무 관련 근거</h5>
               <ul>
-                <li>금융소비자보호법 제21조 제7호 및 동법 시행령 제16조 제3항 취지</li>
+                <li>금융소비자보호법 제21조 제7호 및 동법 시행령 제16조 제3항</li>
                 <li>내부통제기준에 따른 직무수행교육을 받지 않은 자가 계약 체결 권유와 관련된 업무를 수행하지 않도록 관리해야 함</li>
               </ul>
             </div>
             <div class="basis-group">
               <h5>2. 방문판매인력교육 관련 근거</h5>
               <ul>
-                <li>은행권 방문판매 모범규준 제5조 취지</li>
+                <li>은행권 방문판매 모범규준 제5조</li>
                 <li>방문판매인력에 대한 방문판매 시 준수사항 및 금지행위 등 연 1회 이상 교육</li>
               </ul>
             </div>
             <div class="basis-group">
               <h5>3. 자격증 보수교육 관련 근거</h5>
               <ul>
-                <li>펀드투자권유자문인력 및 파생상품투자권유자문인력은 관련 규정에 따라 유지자격자가 매년 자격증 보수교육을 이수해야 한다는 취지</li>
-                <li>보험대리점(생명·손해·제3보험)은 자격증 등록일로부터 2년 경과 시마다 자격증 보수교육 대상이 될 수 있으며, 2년이 되는 날로부터 6개월 이내에 자격증별로 각각 자격증 보수교육을 이수해야 한다는 취지</li>
+                <li>펀드투자권유자문인력 및 파생상품투자권유자문인력은 관련 협회 규정에 따라 유지자격자가 매년 1회 이상 보수교육을 이수해야 함</li>
+                <li>보험대리점(생명·손해·제3보험)은 자격증 등록일을 기준으로 2년마다 보수교육 대상 여부가 발생하며, 대상자는 2년이 되는 날부터 6개월 이내에 보유 종목별 보수교육을 각각 이수해야 함</li>
               </ul>
             </div>
           </div>
@@ -1010,21 +1121,97 @@
   </div>
 </footer>
 
-<!-- ═════ PC 최초 접속 매뉴얼 모달 ═════ -->
-<div class="modal-overlay hidden" id="manualModal" role="dialog" aria-modal="true" aria-labelledby="manualTitle">
+<!-- ═════ Bazle 안내 모달 ═════ -->
+<div class="modal-overlay hidden" id="bazleModal" role="dialog" aria-modal="true" aria-labelledby="bazleTitle">
   <div class="modal-box">
     <div class="modal-head">
       <div>
-        <h2 id="manualTitle">PC 최초 접속 매뉴얼</h2>
+        <h2 id="bazleTitle">Bazle 안내</h2>
+        <p>금융상품숙지의무 · 방문판매인력교육 등 필수교육을 수강하는 당행 연수 플랫폼입니다.
+           PC와 모바일 모두 이용할 수 있습니다.</p>
+      </div>
+      <button class="modal-close" id="bazleClose" aria-label="Bazle 안내 닫기">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="m-intro"><span class="mi-ic">!</span>
+        <div><b>Bazle</b>는 금융상품숙지의무 · 방문판매인력교육 등 <b>판매권한 취득에 필요한 필수교육</b>을 수강하는
+        당행 연수 플랫폼입니다. 아래 방법으로 PC 또는 모바일에서 접속해 교육을 이수하세요.</div>
+      </div>
+
+      <div class="bz-grid">
+
+        <!-- PC -->
+        <div class="bz-card">
+          <div class="bz-head"><span class="bz-ic">💻</span>
+            <div><h3>PC 버전 로그인</h3><span class="bz-sub">사무실 PC · 개인 PC 모두 가능</span></div>
+          </div>
+          <div class="bz-body">
+            <div class="bz-steps">
+              <div class="bz-step"><span class="bz-no">1</span>
+                <div>브라우저 주소창에 아래 주소를 입력해 접속합니다.</div></div>
+              <div class="bz-step"><span class="bz-no">2</span>
+                <div><b>행번</b>과 <b>비밀번호</b>를 입력해 로그인합니다.</div></div>
+              <div class="bz-step"><span class="bz-no">3</span>
+                <div><b>필수교육</b> 메뉴에서 해당 과정을 선택해 수강합니다.</div></div>
+            </div>
+            <div class="bz-linkbox">
+              <span class="bz-linklabel">PC 접속 주소</span>
+              <a class="bz-url" href="http://bazle.imbank.co.kr" target="_blank" rel="noopener">http://bazle.imbank.co.kr</a>
+              <button type="button" class="bz-copy" data-copy="http://bazle.imbank.co.kr">복사</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 모바일 -->
+        <div class="bz-card">
+          <div class="bz-head"><span class="bz-ic">📱</span>
+            <div><h3>모바일 버전 설치</h3><span class="bz-sub">출퇴근 · 외부에서도 수강</span></div>
+          </div>
+          <div class="bz-body">
+            <div class="bz-qr-row">
+              <div class="bz-qr">
+                <img src="data:image/png;base64,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" alt="Bazle 모바일 앱 설치 QR코드" width="150" height="150" />
+                <span class="bz-qr-cap">QR 코드 스캔</span>
+              </div>
+              <div class="bz-qr-guide">
+                <p>휴대폰 카메라로 <b>QR 코드를 스캔</b>하거나, 아래 설치 링크로 접속해
+                   <b>모바일 앱(Bazle)</b>을 설치하세요.</p>
+                <div class="bz-steps">
+                  <div class="bz-step"><span class="bz-no">1</span><div>QR 스캔 또는 링크 접속</div></div>
+                  <div class="bz-step"><span class="bz-no">2</span><div>앱 설치 후 <b>행번</b>으로 로그인</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="bz-linkbox">
+              <span class="bz-linklabel">모바일 설치 링크</span>
+              <a class="bz-url" href="http://mlc.hunet.co.kr/Areas/1886/down.html" target="_blank" rel="noopener">http://mlc.hunet.co.kr/Areas/1886/down.html</a>
+              <button type="button" class="bz-copy" data-copy="http://mlc.hunet.co.kr/Areas/1886/down.html">복사</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="m-tip">💡 로그인이 되지 않거나 접속에 문제가 있으면 <b>HR부 김재형(☎1010)</b>으로 문의하세요.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═════ PC 최초 접속 매뉴얼 모달 ═════ -->
+<div class="modal-overlay hidden" id="pcManualModal" role="dialog" aria-modal="true" aria-labelledby="pcManualTitle">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div>
+        <h2 id="pcManualTitle">PC 최초 접속 매뉴얼</h2>
         <p>윈도우 로그인 → Nexpia 접속 → 개인화인증(iM PASS) 등록 → Nexpia 재접속.
            처음이거나 오랜만이어도 순서대로 따라 하시면 됩니다.</p>
       </div>
-      <button class="modal-close" id="manualClose" aria-label="매뉴얼 닫기">✕</button>
+      <button class="modal-close" id="pcManualClose" aria-label="매뉴얼 닫기">✕</button>
     </div>
     <div class="modal-body">
       <div class="m-intro"><span class="mi-ic">!</span>
         <div>아래 화면은 이해를 돕기 위한 <b>예시 이미지</b>이며, 실제 행번·비밀번호는 본인 정보로 입력하세요.
-        실제 화면과 일부 다를 수 있으며, 문제가 있으면 로그인 문의 내선(6533·2404·2416)으로 연락하시기 바랍니다.</div>
+        실제 화면과 일부 다를 수 있습니다.</div>
       </div>
 
       <!-- STEP 01 -->
@@ -1043,6 +1230,7 @@
             <div class="win-pw"><span>dgb@행번뒤4자리</span><i>→</i></div>
           </div>
         </div>
+        <div class="m-tip">☎ 윈도우 접속이 <b>되지 않을 때만</b> 담당자(내선 <b>2456</b>)로 문의하세요.</div>
       </div>
 
       <!-- STEP 02 -->
@@ -1068,7 +1256,6 @@
               <span class="dl">[다운로드] 개인화인증 설치 프로그램</span>
               <span class="dl">[다운로드] 인터넷옵션 자동설정 실행</span>
               <span class="dl">[다운로드] 통합단말 삭제 실행</span>
-              <span>로그인 문의 : 내선 6533, 2404, 2416</span>
             </div>
           </div>
         </div>
@@ -1189,20 +1376,20 @@
   </div>
 </div>
 
-<!-- ═════ 상품 담당자 한눈에 보기 모달 ═════ -->
+<!-- ═════ 상품 담당자 한 눈에 보기 모달 ═════ -->
 <div class="modal-overlay hidden" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
   <div class="modal-box">
     <div class="modal-head">
       <div>
-        <h2 id="contactTitle">상품 담당자 한눈에 보기</h2>
+        <h2 id="contactTitle">상품 담당자 한 눈에 보기</h2>
         <p>“상품교육 미이수” 오류 등 권한 관련 문의 시 아래 담당 부서·내선으로 연락하세요.</p>
       </div>
       <button class="modal-close" id="contactClose" aria-label="닫기">✕</button>
     </div>
     <div class="modal-body">
       <div class="m-intro"><span class="mi-ic">!</span>
-        <div>아래 담당 부서·내선번호는 <b>예시 양식</b>입니다. 실제 담당자 정보는 최신 내부 안내 기준으로
-        입력·수정하여 사용하시기 바랍니다.</div>
+        <div>아래는 <b>상품숙지의무 상품별 담당자</b> 기준입니다. 인사이동 등으로 변동될 수 있으니
+        최신 내부 안내를 함께 확인하시기 바랍니다.</div>
       </div>
       <div class="contact-table" id="contactTable"></div>
     </div>
@@ -1218,18 +1405,20 @@
 const A = {
   visit: {
     cls:"req", badge:"필수",
-    title:(t)=> t==="returning"||t==="transfer" ? "방문판매인력교육 이수 여부 확인" : "방문판매인력교육 이수",
-    desc:"영업점 및 본부부서 직원이 방문판매 관련 준수사항과 금지행위를 숙지하기 위한 교육입니다.",
+    title:()=>"방문판매 업무를 수행하는 직원은 연 1회 이상 관련 교육을 이수하세요.",
+    desc:"방문판매 시 준수사항, 금지행위, 소비자 보호 유의사항을 숙지하기 위한 교육입니다.",
     btns:[{label:"수강방법 보기",to:"sec-product",primary:true},{type:"why"},{type:"risk"}],
-    why:"방문판매인력교육은 방문판매 시 준수사항과 금지행위를 숙지하기 위한 교육입니다. 은행권 방문판매 모범규준 제5조 취지에 따라 방문판매인력에 대한 직무교육이 필요합니다.",
+    path:"Bazle 접속 › 필수교육 › (전직원) 방문판매인력교육",
+    why:"은행권 방문판매 모범규준에 따라 방문판매인력은 방문판매 시 준수사항과 금지행위 등에 대한 교육을 연 1회 이상 받아야 합니다. 방문판매 업무를 수행하는 직원은 해당 교육을 통해 소비자 보호 기준과 업무상 유의사항을 사전에 숙지해야 합니다.",
     risk:"교육 미이수 시 방문판매 관련 업무 수행 또는 상품판매권한 관리에 제한이 발생할 수 있으며, 실제 판매 가능 여부는 관련 시스템 및 담당부서 확인이 필요합니다."
   },
   product: {
     cls:"req", badge:"필수",
-    title:(t)=> t==="returning"||t==="transfer" ? "금융상품숙지의무 6개 강의 이수 여부 확인" : "금융상품숙지의무 6개 강의 이수",
-    desc:"영업점에서 금융상품을 판매하기 전 상품별 주요 내용과 유의사항을 숙지하기 위한 교육입니다.",
-    btns:[{label:"6개 강의 보기",to:"sec-product",primary:true},{type:"why"},{type:"risk"}],
-    why:"금융상품 판매 또는 계약체결 권유 업무는 금융소비자 보호와 직접 연결됩니다. 금융소비자보호법 제21조 제7호 및 동법 시행령 제16조 제3항 취지에 따라, 내부통제기준에 따른 직무수행교육을 받지 않은 직원이 계약체결 권유 관련 업무를 수행하지 않도록 관리할 필요가 있습니다.",
+    title:()=>"금융상품 계약체결 권유 업무를 수행하기 전, 관련 직무수행교육을 이수하세요.",
+    desc:"교육을 이수하지 않은 경우 해당 업무 수행이 제한될 수 있습니다.",
+    btns:[{label:"6개 PART 보기",to:"sec-product",primary:true},{type:"why"},{type:"risk"}],
+    path:"Bazle 접속 › 필수교육 › (전직원) 금융상품숙지의무 › Level1 금융상품숙지의무",
+    why:"금융소비자보호법 및 동법 시행령은 내부통제기준에 따른 직무수행교육을 받지 않은 직원이 계약체결 권유 관련 업무를 수행하지 않도록 관리하도록 정하고 있습니다. 따라서 금융상품 관련 업무를 수행하기 전에는 필요한 교육을 이수했는지 확인해야 합니다.",
     risk:"해당 상품의 숙지의무교육을 이수하지 않은 경우, 상품판매권한이 등록되지 않거나 판매 거래 시 “상품교육 미이수” 오류가 발생할 수 있습니다."
   },
   etf: {
@@ -1237,16 +1426,21 @@ const A = {
     title:()=>"신상품 · ETF 상품숙지교육 확인",
     desc:"신상품 또는 ETF상품을 판매하는 경우 별도 숙지교육이 필요할 수 있습니다.",
     btns:[{label:"해당 교육 보기",to:"sec-product",primary:true},{label:"권한등록 방식 보기",to:"flow-block"},{type:"why"},{type:"risk"}],
+    paths:[
+      {label:"신상품", route:"Bazle 접속 › 필수교육 › (전직원) 금융상품숙지의무 › Level2 신상품사전교육"},
+      {label:"ETF상품", route:"Bazle 접속 › 필수교육 › (전직원) 금융상품숙지의무 › Level3 ETF상품교육"}
+    ],
     why:"기본 금융상품숙지의무교육을 이수했더라도, 특정 신상품이나 ETF상품은 별도 상품 특성과 판매 유의사항을 숙지해야 하므로 별도 교육이 필요할 수 있습니다.",
     risk:"신상품 또는 ETF상품은 별도 교육 이수 여부에 따라 NEXPIA 상품판매권한 등록이 필요할 수 있습니다. 일부 교육은 RPA를 통해 매일 9시부터 1시간 단위로 자동 등록될 예정이나, 실제 반영 여부는 시스템에서 확인해야 합니다."
   },
   product_pt: {
     cls:"req", badge:"필수",
-    title:()=>"금융상품숙지의무 강의 1(수신 상품 + 신용카드 상품) 이수",
-    desc:"피크타이머는 6개 강의 중 수신 상품 + 신용카드 상품 판매에 필요한 강의 1만 이수하면 됩니다.",
-    btns:[{label:"강의 보기",to:"sec-product",primary:true},{type:"why"},{type:"risk"}],
-    why:"금융상품 판매 또는 계약체결 권유 업무는 금융소비자 보호와 직접 연결됩니다. 금융소비자보호법 제21조 제7호 및 동법 시행령 제16조 제3항 취지에 따라, 판매하는 상품(수신·신용카드)에 대한 직무수행교육을 이수해야 합니다.",
-    risk:"해당 강의를 이수하지 않은 경우, 상품판매권한이 등록되지 않거나 판매 거래 시 “상품교육 미이수” 오류가 발생할 수 있습니다."
+    title:()=>"금융상품숙지의무 PART1(수신 상품 + 신용카드 상품) 이수",
+    desc:"피크타이머는 6개 PART 중 수신 상품 + 신용카드 상품 판매에 필요한 PART1만 이수하면 됩니다.",
+    btns:[{label:"PART 보기",to:"sec-product",primary:true},{type:"why"},{type:"risk"}],
+    path:"Bazle 접속 › 필수교육 › (전직원) 금융상품숙지의무 › Level1 금융상품숙지의무",
+    why:"금융소비자보호법 및 동법 시행령은 내부통제기준에 따른 직무수행교육을 받지 않은 직원이 계약체결 권유 관련 업무를 수행하지 않도록 관리하도록 정하고 있습니다. 피크타이머도 판매하는 상품(수신·신용카드)에 대한 직무수행교육을 이수했는지 확인해야 합니다.",
+    risk:"해당 PART를 이수하지 않은 경우, 상품판매권한이 등록되지 않거나 판매 거래 시 “상품교육 미이수” 오류가 발생할 수 있습니다."
   },
   newprod_pt: {
     cls:"opt", badge:"해당 시",
@@ -1258,25 +1452,21 @@ const A = {
   },
   fund: {
     cls:"req", badge:"필수",
-    title:()=>"펀드 · 파생상품투자권유자문인력 자격증 보수교육 대상 여부 확인",
-    desc:(t)=> t==="transfer"
-      ? "본부부서에서 영업점으로 전입하는 직원은 금융투자상품 판매권한이 실제 창구 업무와 연결되므로, 자격증 보수교육 이수 여부를 먼저 확인해야 합니다."
-      : "복직 후 영업점에서 금융투자상품을 판매하려면 자격증 보수교육 이수 여부를 먼저 확인해야 합니다.",
+    title:()=>"펀드·파생상품 투자권유 관련 자격 유지자는 매년 보수교육 대상 여부를 확인하세요.",
+    desc:()=>"자격을 유지하고 투자권유 업무를 적정하게 수행하기 위한 필수 점검 항목입니다.",
     btns:[{label:"대상 여부 확인",to:"sec-maintenance",primary:true},{label:"수강방법 보기",to:"sec-howto"},{type:"why"},{type:"risk"}],
-    why:"펀드투자권유자문인력 및 파생상품투자권유자문인력은 관련 자격 유지와 상품 판매권한 관리를 위해 자격증 보수교육 이수 여부 확인이 필요합니다. 특히 복직 또는 영업점 전입 시 미이수 상태라면 창구에서 금융투자상품 판매자격이 없는 것으로 표시될 수 있습니다.",
+    why:"펀드투자권유자문인력 및 파생상품투자권유자문인력 등 금융투자전문인력은 관련 협회 규정에 따라 매년 1회 이상 보수교육을 이수해야 합니다. 자격 유지자는 매년 보수교육 대상 여부와 이수기한을 확인해야 합니다. 최종 대상 여부와 이수기한은 사내 교육담당부서 또는 관련 협회 기준에 따라 확인하세요.",
     risk:(t)=> t==="transfer"
       ? "영업점 전입 후 창구에서 금융투자상품 판매자격이 없는 것으로 표시되어 판매 진행이 불가능할 수 있습니다."
       : "창구에서 금융투자상품 판매자격이 없는 것으로 표시되어 판매 진행이 불가능할 수 있습니다."
   },
   insurance: {
     cls:"rec", badge:"권장 / 해당 시",
-    title:()=>"보험대리점 자격증 보수교육 대상 여부 확인",
-    desc:(t)=> t==="transfer"
-      ? "영업점 전입 후 방카슈랑스 담당자로 지정될 수 있으므로 생명보험·손해보험·제3보험 자격증 보수교육 대상 여부를 미리 확인하는 것을 권장합니다."
-      : "복직과 동시에 방카슈랑스 담당자로 지정될 수 있으므로 생명보험·손해보험·제3보험 자격증 보수교육 대상 여부를 미리 확인하는 것을 권장합니다.",
+    title:()=>"보험대리점 관련 자격 보유자는 등록일 기준 2년마다 보수교육 대상 여부를 확인하세요.",
+    desc:()=>"생명보험, 손해보험, 제3보험은 각 자격별로 보수교육 대상과 이수기한을 확인해야 합니다.",
     btns:[{label:"대상 여부 확인",to:"sec-maintenance",primary:true},{label:"수강방법 보기",to:"sec-howto"},{type:"why"},{type:"risk"}],
-    why:"생명보험, 손해보험, 제3보험 보험대리점 자격은 등록일로부터 일정 기간 경과 시 자격증 보수교육 대상이 될 수 있습니다. 방카슈랑스 담당자로 지정되는 경우 판매업무 수행 전 자격증 보수교육 이수 여부를 확인해야 합니다.",
-    risk:"방카슈랑스 담당자로 지정되더라도 필요한 자격증 보수교육을 이수하지 않은 경우 관련 상품 판매업무 수행이 제한될 수 있습니다."
+    why:"보험대리점 관련 보수교육은 등록일을 기준으로 2년마다 대상 여부가 발생합니다. 대상자는 매 2년이 되는 날부터 6개월 이내에 생명보험, 손해보험, 제3보험 등 보유 종목별 보수교육을 각각 이수해야 합니다. 본인의 등록일과 보유 자격 종목에 따라 교육 대상 여부와 이수기한이 달라질 수 있습니다.",
+    risk:"방카슈랑스 담당자로 지정되더라도 필요한 보수교육을 이수하지 않은 경우 관련 상품 판매업무 수행이 제한될 수 있습니다."
   }
 };
 
@@ -1287,7 +1477,7 @@ const TARGETS = {
     intro:`신입행원은 영업점 근무 전 기본 상품판매교육을 이수하여야 합니다. 또한 신규로 출시된 신상품을 판매하기 위해서는 해당 상품과 관련한 별도 교육을 수강하셔야 합니다.`,
     alert:null,
     actions:["visit","product","etf"],
-    checklist:["방문판매인력교육 이수","금융상품숙지의무 6개 강의 확인","신상품/ETF 관련 안내 확인"]
+    checklist:["방문판매인력교육 이수","금융상품숙지의무 6개 PART 확인","신상품/ETF 관련 안내 확인"]
   },
   returning:{
     name:"복직직원 온보딩", maint:true,
@@ -1295,30 +1485,30 @@ const TARGETS = {
     intro:`복직직원은 복직 후 영업점에서 바로 상품판매 업무를 수행할 수 있으므로, 판매교육과 자격증 보수교육 상태를 먼저 점검해야 합니다.`,
     alert:`복직 전 자격증 보수교육 이수 여부를 반드시 확인하세요. 미이수 시 창구에서 금융투자상품 판매권한이 없는 것으로 표시되어 판매 진행이 불가능할 수 있습니다.`,
     actions:["visit","product","etf","fund","insurance"],
-    checklist:["방문판매인력교육 이수 여부 확인","금융상품숙지의무 6개 강의 확인","신상품/ETF 관련 안내 확인","펀드/파생 자격증 보수교육 관련 안내 확인","보험대리점 자격증 보수교육 관련 안내 확인"]
+    checklist:["방문판매인력교육 이수 여부 확인","금융상품숙지의무 6개 PART 확인","신상품/ETF 관련 안내 확인","펀드/파생 자격증 보수교육 관련 안내 확인","보험대리점 자격증 보수교육 관련 안내 확인"]
   },
   peaktimer:{
     name:"신규 채용 피크타이머 온보딩", maint:false,
     cheer:`iM뱅크와 함께하게 되신 것을 환영합니다! 영업점 업무 전 필요한 교육을 아래에서 차근차근 확인해 주세요. 처음의 낯섦은 금세 익숙해집니다. 응원하겠습니다.`,
-    intro:`피크타이머가 이수해야 하는 강의는 금융상품숙지의무 강의 1(수신 상품 + 신용카드 상품)과 신상품 교육뿐입니다. ETF 상품은 판매하지 않으므로 ETF 교육은 필요하지 않으며, 자격증 기반 상품판매권한 대상자가 아니므로 자격증 보수교육 안내도 표시하지 않습니다.`,
+    intro:`피크타이머가 이수해야 하는 PART는 금융상품숙지의무 PART1(수신 상품 + 신용카드 상품) 하나입니다. 그 외 상품은 판매하지 않으므로 추가 교육이나 자격증 보수교육은 필요하지 않습니다.`,
     alert:null,
-    actions:["visit","product_pt","newprod_pt"],
-    checklist:["방문판매인력교육 이수","금융상품숙지의무 강의 1(수신 상품+신용카드 상품) 이수","신상품 상품숙지교육 확인"]
+    actions:["product_pt"],
+    checklist:["금융상품숙지의무 PART1(수신 상품+신용카드 상품) 이수"]
   },
   transfer:{
     name:"본부부서 → 영업점 신규 전입직원 온보딩", maint:true,
-    cheer:`영업점에서의 새로운 시작을 응원합니다! 본부와는 결이 다른 창구 업무가 처음엔 낯설게 느껴질 수 있지만, 아래 판매권한 항목만 미리 챙겨두면 첫날이 한결 수월해집니다. 새로운 자리에서의 활약을 기대하겠습니다.`,
-    intro:`본부부서에서는 필요성을 체감하기 어렵지만, 영업점 전입 후에는 상품판매권한이 창구 업무와 직접 연결됩니다. 발령 전 또는 영업점 배치 직후 아래 항목을 먼저 확인하세요.`,
+    cheer:`오랜만에 영업점 환경으로 돌아오시는 만큼 낯설 수 있지만, 현장 감각은 금세 되살아날 것입니다. 아래 판매권한 및 필수 확인 항목만 미리 점검해두시면 첫날 적응이 훨씬 수월합니다. 새로운 환경에서의 원활한 적응을 응원합니다!`,
+    intro:`영업점 전입 후에는 상품판매권한이 창구 업무 수행과 직접 연결됩니다. 원활한 업무 시작을 위해 발령 전 또는 영업점 배치 직후 아래 항목을 먼저 확인해 주세요.`,
     alert:null,
     actions:["visit","product","etf","fund","insurance"],
-    checklist:["방문판매인력교육 이수 여부 확인","금융상품숙지의무 6개 강의 확인","신상품/ETF 관련 안내 확인","펀드/파생 자격증 보수교육 관련 안내 확인","보험대리점 자격증 보수교육 관련 안내 확인"]
+    checklist:["방문판매인력교육 이수 여부 확인","금융상품숙지의무 6개 PART 확인","신상품/ETF 관련 안내 확인","펀드/파생 자격증 보수교육 관련 안내 확인","보험대리점 자격증 보수교육 관련 안내 확인"]
   }
 };
 
 const FAQ = [
  {q:"왜 금융상품숙지의무교육을 들어야 하나요?",a:"금융상품 판매 전 상품의 주요 내용, 위험, 판매 유의사항을 숙지하기 위한 교육입니다. 관련 법령과 내부통제기준에 따라 교육을 이수하지 않은 직원은 계약체결 권유 관련 업무 수행이 제한될 수 있습니다."},
  {q:"방문판매인력교육과 금융상품숙지의무는 다른 교육인가요?",a:"다릅니다. 방문판매인력교육은 방문판매 시 준수사항과 금지행위 등을 중심으로 하는 교육이고, 금융상품숙지의무는 실제 판매할 금융상품의 내용과 특성을 숙지하기 위한 교육입니다."},
- {q:"금융상품숙지의무 강의는 몇 개로 구분되나요?",a:"총 6개로 구분됩니다. 수신+신용카드, 신탁+퇴직연금+일임형 ISA, 펀드, 개인여신+기업여신, 외환+자금운용, 방카슈랑스입니다."},
+ {q:"금융상품숙지의무 PART는 몇 개로 구분되나요?",a:"총 6개 PART로 구분됩니다. PART1 수신+신용카드, PART2 신탁+퇴직연금, PART3 펀드+일임형 ISA, PART4 개인여신+기업여신, PART5 외환+자금운용, PART6 방카슈랑스입니다."},
  {q:"신상품이 나오면 기존 금융상품숙지의무만 들으면 되나요?",a:"아닙니다. 특정 신상품이 출시되면 해당 신상품 숙지의무교육을 별도로 수강해야 할 수 있습니다."},
  {q:"ETF상품을 판매하려면 별도 교육이 필요한가요?",a:"ETF상품 판매를 위해서는 ETF상품 숙지의무교육을 별도로 수강해야 할 수 있습니다."},
  {q:"교육을 들으면 상품판매권한이 바로 등록되나요?",a:"일부 교육은 RPA를 통해 NEXPIA 시스템에 자동 등록될 예정입니다. 자동 등록은 매일 9시부터 1시간 단위로 처리됩니다. 다만 방카슈랑스 교육, 방문판매인력교육 등은 자동 등록 대상이 아닐 수 있으므로 실제 권한 반영 여부를 확인해야 합니다."},
@@ -1326,7 +1516,7 @@ const FAQ = [
  {q:"복직직원은 왜 자격증 보수교육을 미리 확인해야 하나요?",a:"복직 후 영업점에서 바로 상품 판매 업무를 수행할 수 있기 때문입니다. 자격증 보수교육 미이수 시 창구에서 판매자격이 없는 것으로 표시되어 거래 진행이 불가능할 수 있습니다."},
  {q:"본부부서에서 영업점으로 전입하는 직원도 자격증 보수교육을 확인해야 하나요?",a:"필요합니다. 본부부서 근무 중에는 해당 상품을 판매할 일이 없어 판매권한을 사용할 일이 없지만, 영업점 전입 후에는 펀드 · 파생상품 · 보험상품 판매권한을 위해 자격증 보수교육을 들어야 합니다."},
  {q:"신입행원도 펀드/파생/보험대리점 자격증 보수교육을 들어야 하나요?",a:"일반적으로 신입행원은 해당 자격증을 보유하고 있지 않으므로 자격증 보수교육 대상 안내를 표시하지 않습니다. 자격증 취득 후 별도 기준에 따라 자격증 보수교육 대상이 될 수 있습니다."},
- {q:"보험대리점 자격증 보수교육은 언제 들어야 하나요?",a:"생명보험, 손해보험, 제3보험은 자격증 등록일로부터 2년 경과 시마다 자격증 보수교육 대상이 될 수 있으며, 2년이 되는 날로부터 6개월 이내에 자격증별로 각각 이수해야 한다는 취지로 안내합니다. 실제 대상 여부는 보험 관련 시스템에서 확인해야 합니다."},
+ {q:"보험대리점 자격증 보수교육은 언제 들어야 하나요?",a:"생명보험, 손해보험, 제3보험은 자격증 등록일을 기준으로 2년마다 보수교육 대상 여부가 발생하며, 대상자는 2년이 되는 날부터 6개월 이내에 종목별로 각각 이수해야 합니다. 실제 대상 여부는 e클린서비스(www.e-cleanins.or.kr)에서 확인해야 합니다.",aHtml:`생명보험, 손해보험, 제3보험은 자격증 등록일을 기준으로 2년마다 보수교육 대상 여부가 발생하며, 대상자는 2년이 되는 날부터 6개월 이내에 종목별로 각각 이수해야 합니다. 실제 대상 여부는 <a href="https://www.e-cleanins.or.kr" target="_blank" rel="noopener">e클린서비스(www.e-cleanins.or.kr)</a>에서 확인해야 합니다.`},
  {q:"복직과 동시에 방카슈랑스 담당자가 되면 어떻게 해야 하나요?",a:"생명보험, 손해보험, 제3보험 자격증 보수교육 대상 여부를 사전에 확인하고, 방카 담당자로 지정되기 전에 필요한 자격증 보수교육을 이수해야 합니다."},
  {q:"교육비는 지원되나요?",a:"개별 수강 후 i-HR 시스템에서 기타 교육비용 신청 경로를 통해 신청할 수 있습니다. 수료증과 결제내역 첨부가 필요합니다."}
 ];
@@ -1342,14 +1532,31 @@ const EXAMPLES = [
 
 // 상품 담당자 (예시 양식 — 실제 부서·내선은 최신 내부 안내로 입력/수정)
 const CONTACTS = [
- {name:"수신 · 신용카드 상품", note:"강의 1", dept:"지정 필요", tel:""},
- {name:"신탁 · 퇴직연금 · 일임형 ISA", note:"강의 2", dept:"지정 필요", tel:""},
- {name:"펀드", note:"강의 3", dept:"지정 필요", tel:""},
- {name:"개인여신 · 기업여신 상품", note:"강의 4", dept:"지정 필요", tel:""},
- {name:"외환 · 자금운용 상품", note:"강의 5", dept:"지정 필요", tel:""},
- {name:"방카슈랑스", note:"강의 6", dept:"지정 필요", tel:""},
- {name:"신상품 · ETF 상품숙지교육", note:"권한 등록 관련", dept:"지정 필요", tel:""},
- {name:"로그인 · 통합인증 문의", note:"NEXPIA 접속", dept:"인재개발팀", tel:"6533 · 2404 · 2416"}
+ {part:"PART1", group:"수신 · 신용카드 상품", items:[
+   {dept:"수신기획부", prod:"수신",     tel:"2162"},
+   {dept:"결제사업부", prod:"개인카드", tel:"2926"},
+   {dept:"결제사업부", prod:"기업카드", tel:"2933"},
+   {dept:"결제사업부", prod:"카드론",   tel:"2276"}
+ ]},
+ {part:"PART2", group:"신탁 · 퇴직연금", items:[
+   {dept:"신탁연금부", prod:"신탁",     tel:"2199"},
+   {dept:"신탁연금부", prod:"퇴직연금", tel:"2181"}
+ ]},
+ {part:"PART3", group:"펀드 · 일임형 ISA", items:[
+   {dept:"WM사업부", prod:"펀드",       tel:"2171"},
+   {dept:"WM사업부", prod:"일임형 ISA", tel:"2132"}
+ ]},
+ {part:"PART4", group:"개인여신 · 기업여신 상품", items:[
+   {dept:"여신정책부", prod:"기업여신", tel:"2328"},
+   {dept:"개인여신팀", prod:"개인여신", tel:"2337 · 6506"}
+ ]},
+ {part:"PART5", group:"외환 · 자금운용 상품", items:[
+   {dept:"외환사업부", prod:"외환",        tel:"2992"},
+   {dept:"자금운용부", prod:"자금운용상품", tel:"7636"}
+ ]},
+ {part:"PART6", group:"방카슈랑스", items:[
+   {dept:"WM사업부", prod:"방카", tel:"2189"}
+ ]}
 ];
 
 /* ============================================================
@@ -1381,8 +1588,17 @@ function selectTarget(key){
   $$(".nav-guide").forEach(a=>a.classList.remove("hidden"));
   $$(".nav-maint").forEach(a=>{ if(!showMaint) a.classList.add("hidden"); });
 
-  // 피크타이머 전용 강의 안내 노트
-  $("#ptProductNote").classList.toggle("hidden", key!=="peaktimer");
+  // 피크타이머 전용 PART 안내 노트
+  // 피크타이머 전용: PART1만 노출, PART2~6 및 신상품·ETF 카드 숨김
+  const isPT = key==="peaktimer";
+  $("#ptProductNote").classList.toggle("hidden", !isPT);
+  $$("#lectureGrid .mini").forEach(m=>{
+    m.classList.toggle("hidden", isPT && m.dataset.lec!=="1");
+  });
+  $("#newProdCard").classList.toggle("hidden", isPT);
+  // 상품교육 섹션 제목 · 방문판매인력교육 안내 (피크타이머는 금융상품숙지의무만)
+  $("#productTitle").textContent = isPT ? "금융상품숙지의무 PART" : "방문판매인력교육 및 금융상품숙지의무 PART";
+  $("#visitEduNote").classList.toggle("hidden", isPT);
 
   // 격려 메시지 + intro
   let introHtml = "";
@@ -1426,11 +1642,15 @@ function renderActions(T){
 
     const whyPanel = why ? `<div class="panel why" id="${cid}-why"><div class="panel-inner"><span class="pl">왜 필요한가요?</span>${esc(why)}</div></div>` : "";
     const riskPanel = risk ? `<div class="panel risk" id="${cid}-risk"><div class="panel-inner"><span class="pl">미이수 시 어떻게 되나요?</span>${esc(risk)}</div></div>` : "";
+    const pathHtml = d.paths
+      ? d.paths.map(pp=>`<div class="a-path"><span class="ap-label">${esc(pp.label)}</span><span class="ap-route">${esc(pp.route).replace(/›/g,'<i>›</i>')}</span></div>`).join("")
+      : (d.path ? `<div class="a-path"><span class="ap-label">수강 경로</span><span class="ap-route">${esc(d.path).replace(/›/g,'<i>›</i>')}</span></div>` : "");
 
     return `<article class="acard ${d.cls}">
       <span class="badge ${d.cls}">${esc(d.badge)}</span>
       <h4>${esc(title)}</h4>
       <p class="a-desc">${esc(desc)}</p>
+      ${pathHtml}
       <div class="a-btns">${btns}</div>
       ${whyPanel}${riskPanel}
     </article>`;
@@ -1447,16 +1667,27 @@ function loadCheck(){
 function saveCheck(state){
   try{ localStorage.setItem(ckey(), JSON.stringify(state)); }catch(e){}
 }
+function checkTarget(label){
+  if(label.includes("펀드")||label.includes("파생")||label.includes("보험대리점")) return "sec-maintenance";
+  if(label.includes("신상품")||label.includes("ETF")) return "sec-product";
+  if(label.includes("방문판매")) return "sec-product";
+  if(label.includes("금융상품숙지의무")||label.includes("PART")) return "sec-product";
+  return "sec-action";
+}
 function renderChecklist(T){
   const state = loadCheck();
   const wrap = $("#checklistItems");
   wrap.innerHTML = T.checklist.map((label,i)=>{
     const on = !!state[i];
-    return `<label class="ch-item">
-      <input type="checkbox" data-ci="${i}" ${on?"checked":""}/>
-      <span class="ch-box"></span>
-      <span class="ch-label">${esc(label)}</span>
-    </label>`;
+    const to = checkTarget(label);
+    return `<div class="ch-item">
+      <label class="ch-check">
+        <input type="checkbox" data-ci="${i}" ${on?"checked":""}/>
+        <span class="ch-box"></span>
+        <span class="ch-label">${esc(label)}</span>
+      </label>
+      <button type="button" class="ch-go" data-scroll="${to}">바로가기 →</button>
+    </div>`;
   }).join("");
   updateProgress();
 }
@@ -1477,7 +1708,7 @@ function renderFAQ(){
       <button class="faq-q" data-faq="${i}" aria-expanded="false">
         <span class="qn">Q${i+1}</span><span>${esc(f.q)}</span><span class="chev">▾</span>
       </button>
-      <div class="faq-a" id="faq-a-${i}"><div class="inner">${esc(f.a)}</div></div>
+      <div class="faq-a" id="faq-a-${i}"><div class="inner">${f.aHtml ? f.aHtml : esc(f.a)}</div></div>
     </div>`).join("");
   $("#qChips").innerHTML = EXAMPLES.map(e=>`<button class="qchip" data-kw="${esc(e.kw)}">${esc(e.label)}</button>`).join("");
 }
@@ -1573,18 +1804,32 @@ document.addEventListener("click",(e)=>{
   // FAQ 초기화
   if(e.target.id==="faqClear"){ $("#faqInput").value=""; filterFAQ(""); return; }
 
-  // 접속 매뉴얼 열기
-  if(e.target.closest("#navManual") || e.target.closest("#manualOpenTop")){
-    openManual(); return;
+  // Bazle 안내 열기 / 닫기
+  if(e.target.closest("#navManual")){ openModal("#bazleModal"); return; }
+  if(e.target.closest("#bazleClose") || e.target.id==="bazleModal"){
+    closeModal("#bazleModal"); return;
   }
-  // 접속 매뉴얼 닫기 (버튼 또는 오버레이 배경 클릭)
-  if(e.target.closest("#manualClose") || e.target.id==="manualModal"){
-    closeManual(); return;
+  // PC 최초 접속 매뉴얼 열기 / 닫기
+  if(e.target.closest("#manualOpenTop")){ openModal("#pcManualModal"); return; }
+  if(e.target.closest("#pcManualClose") || e.target.id==="pcManualModal"){
+    closeModal("#pcManualModal"); return;
   }
   // 상품 담당자 모달 열기/닫기
   if(e.target.closest("#contactOpen")){ openModal("#contactModal"); return; }
   if(e.target.closest("#contactClose") || e.target.id==="contactModal"){
     closeModal("#contactModal"); return;
+  }
+
+  // Bazle 링크 복사
+  const cp = e.target.closest(".bz-copy");
+  if(cp){
+    const txt = cp.dataset.copy || "";
+    const done = ()=>{ const o=cp.textContent; cp.textContent="복사됨 ✓"; cp.classList.add("done");
+      setTimeout(()=>{ cp.textContent=o; cp.classList.remove("done"); },1400); };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(done).catch(()=>fallbackCopy(txt,done));
+    } else { fallbackCopy(txt,done); }
+    return;
   }
 });
 
@@ -1596,25 +1841,37 @@ function openModal(sel){
 function closeModal(sel){
   $(sel).classList.add("hidden"); document.body.style.overflow="";
 }
-function openManual(){ openModal("#manualModal"); }
-function closeManual(){ closeModal("#manualModal"); }
+function fallbackCopy(text, cb){
+  try{
+    const ta=document.createElement("textarea");
+    ta.value=text; ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.select();
+    document.execCommand("copy"); document.body.removeChild(ta);
+    if(cb) cb();
+  }catch(e){ alert("복사에 실패했습니다. 주소를 직접 입력해 주세요.\n"+text); }
+}
 document.addEventListener("keydown",(e)=>{
   if(e.key!=="Escape") return;
-  ["#manualModal","#contactModal"].forEach(sel=>{
+  ["#bazleModal","#pcManualModal","#contactModal"].forEach(sel=>{
     if(!$(sel).classList.contains("hidden")) closeModal(sel);
   });
 });
 
 // 상품 담당자 렌더
 function renderContacts(){
-  const head = `<div class="contact-row head"><span>상품 구분</span><span>담당 부서</span><span>내선번호</span></div>`;
-  const rows = CONTACTS.map(c=>`
-    <div class="contact-row">
-      <div class="cr-name">${c.name}${c.note?`<span>${c.note}</span>`:""}</div>
-      <div class="cr-dept">${c.dept}</div>
-      <div class="cr-tel ${c.tel?"":"todo"}">${c.tel||"지정 필요"}</div>
-    </div>`).join("");
-  $("#contactTable").innerHTML = head + rows;
+  const head = `<div class="contact-row head"><span>담당 부서</span><span>상품</span><span>담당자 연락처</span></div>`;
+  const groups = CONTACTS.map(g=>{
+    const gh = `<div class="cg-head"><span class="cg-part">${esc(g.part)}</span>
+      <span class="cg-name">${esc(g.group)}${g.note?`<i>${esc(g.note)}</i>`:""}</span></div>`;
+    const rows = g.items.map(it=>`
+      <div class="contact-row">
+        <div class="cr-dept">${esc(it.dept)}</div>
+        <div class="cr-prod">${esc(it.prod)}</div>
+        <div class="cr-tel ${it.tel?"":"todo"}">${it.tel?`☎ ${esc(it.tel)}`:"지정 필요"}</div>
+      </div>`).join("");
+    return gh + rows;
+  }).join("");
+  $("#contactTable").innerHTML = head + groups;
 }
 
 // 체크박스
