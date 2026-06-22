@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<!-- suggested filename: onboarding_sales_authority_guide.html -->
+<!-- iM뱅크 영업점 근무 전 판매권한 체크가이드 / Internal Onboarding Guide -->
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>영업점 근무 전 판매권한 체크가이드 · iM뱅크</title>
+<style>
+  :root{
+    --mint:#00C7A9; --mint-deep:#009E86; --mint-ink:#00715F;
+    --lime:#E2F15E;
+    --ink:#1A2E2B; --ink-soft:#3C534F;
+    --bg:#F2FBF8; --surface:#FFFFFF; --surface-2:#F6FAF9;
+    --line:#E2EEEA; --line-strong:#CDE3DD;
+    --muted:#6E827D; --muted-2:#92A29E;
+    --danger:#D8453C; --danger-bg:#FDEDEC; --danger-line:#F6CDC9;
+    --warn:#B7791F; --warn-bg:#FBF4E3; --warn-line:#EFDCB4;
+    --r-lg:22px; --r-md:16px; --r-sm:11px;
+    --shadow:0 1px 2px rgba(26,46,43,.04), 0 8px 28px rgba(26,46,43,.05);
+    --shadow-hover:0 2px 6px rgba(26,46,43,.06), 0 14px 38px rgba(26,46,43,.09);
+    --maxw:1120px;
+    --font:"Pretendard","Pretendard Variable",-apple-system,BlinkMacSystemFont,
+           "Apple SD Gothic Neo","Malgun Gothic","맑은 고딕",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; font-family:var(--font); color:var(--ink);
+    background:var(--bg); line-height:1.6; letter-spacing:-.01em;
+    -webkit-font-smoothing:antialiased;
+    word-break:keep-all; text-wrap:pretty;
+  }
+  h1,h2,h3,h4,p{margin:0;}
+  button{font-family:inherit; cursor:pointer;}
+  a{color:var(--mint-ink); text-decoration:none;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px;}
+
+  /* ───── Header ───── */
+  header.site{
+    background:linear-gradient(180deg,#E6F8F3 0%, var(--bg) 100%);
+    border-bottom:1px solid var(--line);
+    padding:40px 0 30px;
+  }
+  .brand{display:flex; align-items:center; gap:10px; margin-bottom:18px;}
+  .brand .logo{
+    width:30px; height:30px; border-radius:9px;
+    background:var(--mint); color:#fff; font-weight:800; font-size:15px;
+    display:grid; place-items:center; letter-spacing:-.04em;
+  }
+  .brand b{font-size:15px; font-weight:700; letter-spacing:-.02em;}
+  .brand span{font-size:12.5px; color:var(--muted); margin-left:2px;}
+  header.site h1{
+    font-size:clamp(26px,4.6vw,40px); font-weight:800;
+    line-height:1.2; letter-spacing:-.035em;
+  }
+  header.site .sub{
+    margin-top:12px; font-size:clamp(14.5px,2vw,17px);
+    color:var(--ink-soft); font-weight:500;
+  }
+  header.site .tag{
+    display:inline-block; margin-top:18px; font-size:12px; font-weight:600;
+    color:var(--mint-ink); background:#fff; border:1px solid var(--line-strong);
+    padding:6px 12px; border-radius:999px;
+  }
+
+  /* ───── Stepper nav ───── */
+  nav.steps{
+    position:sticky; top:0; z-index:40;
+    background:rgba(255,255,255,.92); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.steps .wrap{display:flex; gap:4px; overflow-x:auto; padding:0 20px;
+    scrollbar-width:none;}
+  nav.steps .wrap::-webkit-scrollbar{display:none;}
+  nav.steps a{
+    flex:0 0 auto; padding:14px 14px 12px; font-size:13.5px; font-weight:600;
+    color:var(--muted); border-bottom:2.5px solid transparent;
+    white-space:nowrap; transition:.15s;
+  }
+  nav.steps a:hover{color:var(--ink);}
+  nav.steps a.active{color:var(--mint-ink); border-bottom-color:var(--mint);}
+  nav.steps a.hidden{display:none;}
+
+  main{padding:40px 0 80px;}
+  section{scroll-margin-top:64px;}
+
+  /* ───── Section heads ───── */
+  .sec-eyebrow{
+    font-size:12px; font-weight:700; letter-spacing:.04em;
+    color:var(--mint-deep); text-transform:uppercase; margin-bottom:8px;
+  }
+  .sec-title{font-size:clamp(20px,3vw,26px); font-weight:800;
+    letter-spacing:-.03em; line-height:1.25;}
+  .sec-desc{margin-top:10px; color:var(--ink-soft); font-size:15px; max-width:760px;}
+  .sec-gap{margin-top:64px;}
+
+  /* ───── Target select ───── */
+  #target-select .q{
+    font-size:clamp(22px,3.4vw,30px); font-weight:800; letter-spacing:-.03em;
+    margin-bottom:8px;
+  }
+  #target-select .q small{display:block; font-size:15px; font-weight:500;
+    color:var(--muted); margin-top:8px; letter-spacing:0;}
+  .target-grid{
+    margin-top:28px; display:grid; gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  }
+  .target-card{
+    text-align:left; background:var(--surface); border:1px solid var(--line);
+    border-radius:var(--r-lg); padding:24px 22px 22px; box-shadow:var(--shadow);
+    transition:.16s; display:flex; flex-direction:column; gap:10px; min-height:160px;
+  }
+  .target-card:hover{transform:translateY(-3px); box-shadow:var(--shadow-hover);
+    border-color:var(--line-strong);}
+  .target-card .ico{
+    width:42px; height:42px; border-radius:13px; display:grid; place-items:center;
+    background:#E6F8F3; color:var(--mint-deep); font-size:20px; font-weight:800;
+  }
+  .target-card h3{font-size:18px; font-weight:800; letter-spacing:-.02em;}
+  .target-card p{font-size:13.5px; color:var(--muted); line-height:1.55;}
+  .target-card .go{
+    margin-top:auto; font-size:13px; font-weight:700; color:var(--mint-ink);
+    display:flex; align-items:center; gap:5px;
+  }
+  .target-card .go::after{content:"→"; transition:.16s;}
+  .target-card:hover .go::after{transform:translateX(3px);}
+
+  /* ───── Selected bar ───── */
+  .sel-bar{
+    display:flex; flex-wrap:wrap; align-items:center; gap:12px;
+    background:var(--ink); color:#fff; border-radius:var(--r-md);
+    padding:16px 20px; box-shadow:var(--shadow);
+  }
+  .sel-bar .who{font-size:13px; color:#A9C4BE;}
+  .sel-bar .who b{display:block; font-size:17px; font-weight:800; color:#fff;
+    letter-spacing:-.02em; margin-top:2px;}
+  .sel-bar .actions{margin-left:auto; display:flex; gap:8px; flex-wrap:wrap;}
+  .btn-ghost{
+    background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.22);
+    padding:9px 14px; border-radius:10px; font-size:13px; font-weight:600;
+  }
+  .btn-ghost:hover{background:rgba(255,255,255,.2);}
+
+  .lead{margin-top:26px; font-size:clamp(17px,2.4vw,21px); font-weight:800;
+    letter-spacing:-.02em;}
+
+  /* alert (강조/경고) */
+  .alert{
+    margin-top:16px; border-radius:var(--r-md); padding:16px 18px;
+    font-size:14px; line-height:1.6; display:flex; gap:12px; align-items:flex-start;
+    background:var(--warn-bg); border:1px solid var(--warn-line); color:#7c5410;
+  }
+  .alert .ai{flex:0 0 auto; width:22px; height:22px; border-radius:7px;
+    background:var(--warn); color:#fff; display:grid; place-items:center;
+    font-size:13px; font-weight:800;}
+  .alert.info{background:#EAF7F3; border-color:#C9E7DF; color:var(--mint-ink);}
+  .alert.info .ai{background:var(--mint-deep);}
+
+  /* 격려 메시지 */
+  .cheer{
+    margin-top:18px; border-radius:var(--r-lg);
+    background:linear-gradient(135deg,#E6F8F3 0%, #F6FCEC 100%);
+    border:1px solid #CDE7DF; padding:18px 20px;
+    display:flex; gap:14px; align-items:flex-start; box-shadow:var(--shadow);
+  }
+  .cheer .ci{flex:0 0 auto; width:40px; height:40px; border-radius:13px;
+    background:#fff; border:1px solid #CDE7DF; display:grid; place-items:center;
+    font-size:19px;}
+  .cheer .ct{font-size:11.5px; font-weight:800; color:var(--mint-deep);
+    letter-spacing:.04em; margin-bottom:5px;}
+  .cheer p{font-size:14.8px; line-height:1.7; color:var(--ink); font-weight:500;}
+
+  /* intro note */
+  .intro-note{
+    margin-top:16px; background:var(--surface); border:1px solid var(--line);
+    border-left:3px solid var(--mint); border-radius:var(--r-sm);
+    padding:14px 16px; font-size:14px; color:var(--ink-soft); line-height:1.6;
+  }
+
+  /* ───── Checklist ───── */
+  .checklist{
+    margin-top:18px; background:var(--surface); border:1px solid var(--line);
+    border-radius:var(--r-lg); padding:22px 22px 18px; box-shadow:var(--shadow);
+  }
+  .checklist .ch-head{display:flex; align-items:center; justify-content:space-between;
+    gap:12px; margin-bottom:6px;}
+  .checklist h3{font-size:16px; font-weight:800; letter-spacing:-.02em;}
+  .ch-progress{font-size:12.5px; font-weight:700; color:var(--mint-deep);
+    background:#E6F8F3; padding:5px 11px; border-radius:999px;}
+  .ch-bar{height:6px; border-radius:999px; background:var(--line); overflow:hidden;
+    margin:12px 0 16px;}
+  .ch-bar > i{display:block; height:100%; width:0; background:var(--mint);
+    border-radius:999px; transition:width .3s ease;}
+  .ch-item{
+    display:flex; align-items:flex-start; gap:11px; padding:11px 12px;
+    border-radius:11px; font-size:14.5px; cursor:pointer; transition:.12s;
+    user-select:none;
+  }
+  .ch-item:hover{background:var(--surface-2);}
+  .ch-item input{position:absolute; opacity:0; width:0; height:0;}
+  .ch-box{
+    flex:0 0 auto; width:21px; height:21px; border-radius:7px; margin-top:1px;
+    border:2px solid var(--line-strong); background:#fff; display:grid;
+    place-items:center; transition:.12s;
+  }
+  .ch-box::after{content:"✓"; color:#fff; font-size:13px; font-weight:900;
+    opacity:0; transform:scale(.5); transition:.12s;}
+  .ch-item input:checked + .ch-box{background:var(--mint); border-color:var(--mint);}
+  .ch-item input:checked + .ch-box::after{opacity:1; transform:scale(1);}
+  .ch-item input:checked ~ .ch-label{color:var(--muted-2); text-decoration:line-through;}
+  .ch-item input:focus-visible + .ch-box{outline:2px solid var(--mint-deep);
+    outline-offset:2px;}
+
+  /* ───── Action cards ───── */
+  .action-grid{margin-top:18px; display:grid; gap:14px;}
+  .acard{
+    background:var(--surface); border:1px solid var(--line);
+    border-radius:var(--r-lg); padding:22px 22px 18px; box-shadow:var(--shadow);
+  }
+  .acard.req{border-left:4px solid var(--mint);}
+  .acard.rec{border-left:4px solid var(--lime);}
+  .acard.opt{border-left:4px solid var(--line-strong);}
+  .badge{
+    display:inline-block; font-size:11.5px; font-weight:800; letter-spacing:.01em;
+    padding:4px 10px; border-radius:999px; margin-bottom:11px;
+  }
+  .badge.req{background:#E6F8F3; color:var(--mint-ink);}
+  .badge.rec{background:#F4F8D6; color:#6c7400;}
+  .badge.opt{background:#EEF2F1; color:var(--muted);}
+  .acard h4{font-size:17.5px; font-weight:800; letter-spacing:-.02em; line-height:1.3;}
+  .acard .a-desc{margin-top:8px; font-size:14px; color:var(--ink-soft); line-height:1.6;}
+  .a-btns{margin-top:16px; display:flex; flex-wrap:wrap; gap:8px;}
+  .btn{
+    border:1px solid var(--line-strong); background:#fff; color:var(--ink);
+    padding:9px 14px; border-radius:10px; font-size:13px; font-weight:600;
+    transition:.14s; display:inline-flex; align-items:center; gap:5px;
+  }
+  .btn:hover{border-color:var(--mint); color:var(--mint-ink); background:#F4FBF9;}
+  .btn.primary{background:var(--mint); color:#fff; border-color:var(--mint);}
+  .btn.primary:hover{background:var(--mint-deep); color:#fff;}
+  .btn.why::before{content:"?"; font-weight:800; color:var(--mint-deep);}
+  .btn.risk{color:var(--danger);}
+  .btn.risk::before{content:"!"; font-weight:900;}
+  .btn.risk:hover{border-color:var(--danger); color:var(--danger); background:var(--danger-bg);}
+  .btn[aria-expanded="true"]{background:var(--surface-2); border-color:var(--line-strong);}
+
+  .panel{
+    overflow:hidden; max-height:0; transition:max-height .28s ease;
+  }
+  .panel-inner{
+    margin-top:14px; padding:15px 16px; border-radius:var(--r-sm);
+    font-size:13.8px; line-height:1.65;
+  }
+  .panel.why .panel-inner{background:#EEF8F5; border:1px solid #D2EBE3; color:var(--mint-ink);}
+  .panel.risk .panel-inner{background:var(--danger-bg); border:1px solid var(--danger-line);
+    color:#9c322b;}
+  .panel-inner .pl{font-weight:800; display:block; margin-bottom:5px; font-size:12px;
+    letter-spacing:.02em; opacity:.85;}
+
+  /* ───── Generic card grids ───── */
+  .grid-cards{display:grid; gap:13px; margin-top:20px;
+    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));}
+  .mini{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md);
+    padding:18px; box-shadow:var(--shadow); position:relative;
+  }
+  .mini .num{font-size:12px; font-weight:800; color:var(--mint-deep);}
+  .mini h4{margin-top:8px; font-size:15.5px; font-weight:700; letter-spacing:-.02em;
+    line-height:1.4;}
+  .mini .pill{margin-top:12px; display:inline-block; font-size:11px; font-weight:700;
+    color:var(--mint-ink); background:#E6F8F3; padding:4px 9px; border-radius:999px;}
+
+  .info-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md);
+    padding:20px 22px; box-shadow:var(--shadow); margin-top:18px;
+  }
+  .info-card + .info-card{margin-top:13px;}
+  .info-card h4{font-size:16px; font-weight:800; letter-spacing:-.02em; margin-bottom:10px;}
+  .info-card ul{margin:0; padding-left:18px;}
+  .info-card li{font-size:14px; color:var(--ink-soft); margin:7px 0; line-height:1.6;}
+  .info-card li b{color:var(--ink);}
+
+  .kv{display:flex; gap:10px; font-size:14px; padding:9px 0; border-bottom:1px dashed var(--line);}
+  .kv:last-child{border-bottom:0;}
+  .kv .k{flex:0 0 132px; font-weight:700; color:var(--mint-ink);}
+  .kv .v{color:var(--ink-soft);}
+
+  .note-sm{
+    margin-top:14px; font-size:13px; color:var(--warn); background:var(--warn-bg);
+    border:1px solid var(--warn-line); border-radius:var(--r-sm); padding:12px 14px;
+    line-height:1.6;
+  }
+
+  /* ───── How-to (timeline) ───── */
+  .howto-block{margin-top:22px;}
+  .howto-grid{display:grid; gap:18px; grid-template-columns:280px 1fr; align-items:start;}
+  .howto-summary{
+    background:var(--ink); color:#fff; border-radius:var(--r-lg); padding:22px;
+    position:sticky; top:64px;
+  }
+  .howto-summary .tag2{font-size:11.5px; font-weight:700; color:var(--lime);
+    letter-spacing:.03em;}
+  .howto-summary h4{margin-top:8px; font-size:19px; font-weight:800; letter-spacing:-.02em;}
+  .howto-summary p{margin-top:10px; font-size:13px; color:#B7CFC9; line-height:1.6;}
+  .howto-summary .chips{margin-top:14px; display:flex; flex-wrap:wrap; gap:6px;}
+  .howto-summary .chip{font-size:11.5px; font-weight:600; background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.18); padding:5px 10px; border-radius:999px;}
+  .steps-list{position:relative; padding-left:8px;}
+  .step{position:relative; padding:0 0 20px 40px;}
+  .step:last-child{padding-bottom:0;}
+  .step::before{content:""; position:absolute; left:13px; top:26px; bottom:-4px;
+    width:2px; background:var(--line-strong);}
+  .step:last-child::before{display:none;}
+  .step .dot{position:absolute; left:0; top:0; width:28px; height:28px;
+    border-radius:50%; background:var(--mint); color:#fff; font-size:13px; font-weight:800;
+    display:grid; place-items:center;}
+  .step h5{font-size:15.5px; font-weight:800; letter-spacing:-.02em;}
+  .step p{margin-top:5px; font-size:13.5px; color:var(--ink-soft); line-height:1.6;}
+  .step .sub{margin-top:8px; background:var(--surface-2); border:1px solid var(--line);
+    border-radius:9px; padding:9px 12px; font-size:12.8px; color:var(--muted);}
+  .step .sub code{font-family:inherit; color:var(--mint-ink); font-weight:700;}
+
+  /* ───── Collapsible basis ───── */
+  details.basis{
+    margin-top:18px; background:var(--surface); border:1px solid var(--line);
+    border-radius:var(--r-md); overflow:hidden;
+  }
+  details.basis > summary{
+    list-style:none; cursor:pointer; padding:16px 20px; font-size:15px;
+    font-weight:700; display:flex; align-items:center; justify-content:space-between;
+  }
+  details.basis > summary::-webkit-details-marker{display:none;}
+  details.basis > summary .chev{transition:.2s; color:var(--muted); font-size:13px;}
+  details.basis[open] > summary .chev{transform:rotate(180deg);}
+  details.basis .body{padding:0 20px 20px;}
+  .basis-group{padding:14px 0; border-top:1px dashed var(--line);}
+  .basis-group h5{font-size:14px; font-weight:800; color:var(--mint-ink); margin-bottom:7px;}
+  .basis-group li{font-size:13.3px; color:var(--ink-soft); margin:5px 0; line-height:1.6;}
+
+  /* ───── FAQ ───── */
+  .faq-search{
+    margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;
+  }
+  .faq-search input{
+    flex:1 1 280px; min-height:46px; border:1px solid var(--line-strong);
+    border-radius:12px; padding:0 16px; font-size:14.5px; font-family:inherit;
+    background:#fff; color:var(--ink);
+  }
+  .faq-search input:focus{outline:2px solid var(--mint); outline-offset:1px;
+    border-color:var(--mint);}
+  .faq-clear{border:1px solid var(--line-strong); background:#fff; border-radius:12px;
+    padding:0 16px; font-size:13.5px; font-weight:600; color:var(--muted); min-height:46px;}
+  .faq-clear:hover{color:var(--ink); border-color:var(--ink);}
+  .chips-row{margin-top:12px; display:flex; flex-wrap:wrap; gap:7px;}
+  .qchip{font-size:12.5px; font-weight:600; color:var(--ink-soft);
+    background:var(--surface); border:1px solid var(--line); border-radius:999px;
+    padding:8px 13px; transition:.14s;}
+  .qchip:hover{border-color:var(--mint); color:var(--mint-ink); background:#F4FBF9;}
+  .faq-list{margin-top:18px; display:grid; gap:9px;}
+  .faq-item{background:var(--surface); border:1px solid var(--line);
+    border-radius:var(--r-md); overflow:hidden;}
+  .faq-q{width:100%; text-align:left; border:0; background:none; padding:17px 18px;
+    font-size:14.8px; font-weight:700; color:var(--ink); display:flex; gap:12px;
+    align-items:flex-start; letter-spacing:-.01em;}
+  .faq-q .qn{flex:0 0 auto; font-size:12px; font-weight:800; color:var(--mint-deep);
+    background:#E6F8F3; border-radius:7px; padding:3px 7px; margin-top:1px;}
+  .faq-q .chev{margin-left:auto; color:var(--muted); transition:.2s; flex:0 0 auto;}
+  .faq-q[aria-expanded="true"] .chev{transform:rotate(180deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .26s ease;}
+  .faq-a .inner{padding:0 18px 18px; font-size:14px; color:var(--ink-soft);
+    line-height:1.7;}
+  .faq-empty{display:none; text-align:center; padding:40px 0; color:var(--muted);
+    font-size:14px;}
+
+  /* ───── Footer ───── */
+  footer.site{border-top:1px solid var(--line); padding:30px 0 60px; margin-top:60px;}
+  footer.site p{font-size:12.5px; color:var(--muted-2); line-height:1.7; max-width:820px;}
+  footer.site .ftag{margin-top:14px; font-size:11.5px; color:var(--muted-2);}
+
+  /* ───── To top ───── */
+  #toTop{
+    position:fixed; right:22px; bottom:22px; width:46px; height:46px; border-radius:14px;
+    background:var(--ink); color:#fff; border:0; font-size:18px; box-shadow:var(--shadow-hover);
+    opacity:0; pointer-events:none; transition:.2s; z-index:50;
+  }
+  #toTop.show{opacity:1; pointer-events:auto;}
+  #toTop:hover{background:var(--mint-deep);}
+
+  .hidden{display:none !important;}
+
+  /* ═════ 접속 매뉴얼 트리거 ═════ */
+  .nav-manual{
+    margin:7px 0 7px auto; padding:8px 14px; border:0; cursor:pointer;
+    background:var(--mint); color:#fff; font-weight:700; font-size:13px;
+    border-radius:999px; white-space:nowrap; flex:0 0 auto;
+    display:inline-flex; align-items:center; gap:6px; align-self:center;
+  }
+  .nav-manual:hover{background:var(--mint-deep);}
+  .manual-callout{
+    margin-top:22px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+    background:var(--surface); border:1px solid var(--line-strong);
+    border-radius:var(--r-lg); padding:18px 22px; box-shadow:var(--shadow);
+  }
+  .manual-callout .mc-ico{
+    flex:0 0 auto; width:46px; height:46px; border-radius:14px;
+    background:#E6F8F3; display:grid; place-items:center; font-size:23px;
+  }
+  .manual-callout .mc-txt{flex:1 1 280px; min-width:0;}
+  .manual-callout .mc-txt b{display:block; font-size:15.5px; font-weight:800;
+    letter-spacing:-.02em;}
+  .manual-callout .mc-txt span{display:block; margin-top:3px; font-size:13.5px;
+    color:var(--muted); line-height:1.55;}
+  .manual-callout .mc-btn{
+    flex:0 0 auto; background:var(--ink); color:#fff; border:0; cursor:pointer;
+    padding:12px 18px; border-radius:12px; font-size:14px; font-weight:700;
+    display:inline-flex; align-items:center; gap:7px;
+  }
+  .manual-callout .mc-btn:hover{background:#0c1d1a;}
+
+  /* ═════ 모달 ═════ */
+  .modal-overlay{
+    position:fixed; inset:0; z-index:90; background:rgba(20,36,33,.55);
+    backdrop-filter:blur(3px); display:flex; align-items:flex-start;
+    justify-content:center; padding:32px 16px; overflow-y:auto;
+  }
+  .modal-box{
+    background:var(--bg); width:100%; max-width:880px; border-radius:24px;
+    box-shadow:0 24px 70px rgba(0,0,0,.3); overflow:hidden; margin:auto;
+  }
+  .modal-head{
+    position:sticky; top:0; z-index:2; background:var(--ink); color:#fff;
+    padding:22px 26px; display:flex; align-items:flex-start; gap:16px;
+  }
+  .modal-head h2{font-size:21px; font-weight:800; letter-spacing:-.03em;}
+  .modal-head p{margin-top:6px; font-size:13.5px; color:#A9C4BE; line-height:1.55;}
+  .modal-close{
+    margin-left:auto; flex:0 0 auto; width:38px; height:38px; border-radius:11px;
+    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2);
+    color:#fff; font-size:17px; cursor:pointer; transition:.14s;
+  }
+  .modal-close:hover{background:rgba(255,255,255,.24);}
+  .modal-body{padding:24px 26px 30px;}
+
+  .m-intro{
+    background:var(--warn-bg); border:1px solid var(--warn-line); color:#7c5410;
+    border-radius:var(--r-md); padding:14px 16px; font-size:13.5px; line-height:1.6;
+    display:flex; gap:11px; align-items:flex-start; margin-bottom:24px;
+  }
+  .m-intro .mi-ic{flex:0 0 auto; width:22px; height:22px; border-radius:7px;
+    background:var(--warn); color:#fff; display:grid; place-items:center;
+    font-size:13px; font-weight:800;}
+
+  /* 매뉴얼 스텝 */
+  .mstep{margin-bottom:14px; background:var(--surface); border:1px solid var(--line);
+    border-radius:var(--r-lg); overflow:hidden;}
+  .mstep-head{display:flex; align-items:center; gap:13px; padding:18px 20px;
+    border-bottom:1px solid var(--line); background:var(--surface-2);}
+  .mstep-no{flex:0 0 auto; width:34px; height:34px; border-radius:11px;
+    background:var(--mint); color:#fff; font-size:14px; font-weight:800;
+    display:grid; place-items:center; letter-spacing:-.02em;}
+  .mstep-head h3{font-size:17px; font-weight:800; letter-spacing:-.02em;}
+  .mstep-head .mstep-tag{margin-left:auto; font-size:11.5px; font-weight:700;
+    color:var(--mint-ink); background:#E6F8F3; padding:5px 10px; border-radius:999px;}
+  .mstep-grid{display:grid; grid-template-columns:1fr 320px; gap:20px;
+    padding:20px; align-items:start;}
+  .mstep-grid.rev{grid-template-columns:320px 1fr;}
+  .mstep-list{margin:0; padding:0; list-style:none; counter-reset:ms;}
+  .mstep-list > li{position:relative; padding:0 0 13px 30px; font-size:14px;
+    color:var(--ink-soft); line-height:1.55; counter-increment:ms;}
+  .mstep-list > li:last-child{padding-bottom:0;}
+  .mstep-list > li::before{content:counter(ms); position:absolute; left:0; top:0;
+    width:21px; height:21px; border-radius:50%; background:#E6F8F3;
+    color:var(--mint-deep); font-size:11.5px; font-weight:800;
+    display:grid; place-items:center;}
+  .mstep-list b{color:var(--ink);}
+  .mstep-list code{font-family:inherit; font-weight:800; color:var(--mint-ink);
+    background:#EEF8F5; padding:1px 7px; border-radius:6px; font-size:13px;}
+  .mstep-list .warn-li{color:var(--danger); font-weight:600;}
+  .msub{margin-top:10px; padding:11px 13px; background:var(--surface-2);
+    border:1px solid var(--line); border-radius:10px; font-size:12.8px;
+    color:var(--muted); line-height:1.6;}
+
+  /* ═════ 재현 목업 화면 ═════ */
+  .scr{border-radius:14px; overflow:hidden; border:1px solid var(--line-strong);
+    font-size:11px; box-shadow:var(--shadow); background:#fff;}
+  .scr .hl{outline:2px solid var(--danger); outline-offset:1px; position:relative;}
+  .scr em{font-style:normal; color:var(--danger); font-weight:800; font-size:10.5px;}
+
+  /* 윈도우 로그인 */
+  .scr-win{background:linear-gradient(135deg,#1c2b3a,#2a4055); padding:30px 16px 26px;
+    text-align:center; border:0;}
+  .win-ava{width:62px; height:62px; border-radius:50%; margin:0 auto 14px;
+    background:rgba(255,255,255,.16); display:grid; place-items:center; font-size:30px;}
+  .win-id{color:#fff; font-size:18px; font-weight:700; letter-spacing:-.02em;}
+  .win-id .cap{display:inline-block; margin-left:6px; font-size:10px; font-weight:700;
+    color:#fff; background:var(--danger); padding:1px 6px; border-radius:5px;
+    vertical-align:middle;}
+  .win-pw{margin:12px auto 0; max-width:210px; background:rgba(255,255,255,.92);
+    border:2px solid var(--danger); border-radius:6px; padding:7px 10px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-weight:800; color:var(--danger);}
+  .win-pw i{color:#555; font-style:normal;}
+
+  /* Nexpia 로그인 */
+  .scr-nexpia{padding:14px;}
+  .nx-top{font-weight:800; color:var(--mint-deep); font-size:13px; margin-bottom:12px;}
+  .nx-row{display:flex; align-items:center; gap:8px; margin-bottom:9px; flex-wrap:wrap;}
+  .nx-input{flex:1 1 120px; border:1px solid var(--line-strong); border-radius:5px;
+    padding:6px 9px; color:var(--ink); background:#fff; font-weight:700;}
+  .nx-bio{border:1px solid var(--mint); background:#fff; color:var(--mint-ink);
+    border-radius:5px; padding:6px 12px; font-weight:800; cursor:default;
+    display:inline-flex; gap:6px; align-items:center;}
+  .nx-sel{flex:1 1 140px; border:1px solid var(--line-strong); border-radius:5px;
+    padding:6px 9px; color:var(--ink); background:#fff; font-weight:700;
+    display:flex; justify-content:space-between;}
+  .nx-links{margin-top:11px; border-top:1px dashed var(--line); padding-top:10px;
+    display:grid; gap:6px;}
+  .nx-links span{font-size:10.5px; color:var(--muted);}
+  .nx-links span.dl{color:var(--mint-ink); font-weight:600;}
+
+  /* 팝업 메시지 */
+  .scr-popup,.scr-authpop{border:0; box-shadow:none; background:transparent;}
+  .popup-win{max-width:300px; margin:0 auto; background:#fff; border:1px solid #b9c4cf;
+    border-radius:8px; overflow:hidden; box-shadow:var(--shadow);}
+  .popup-bar{background:#f1f3f6; padding:7px 11px; font-weight:700; color:#444;
+    display:flex; justify-content:space-between; font-size:11px;}
+  .popup-body{padding:14px; display:flex; gap:10px; font-size:11.5px;
+    color:var(--ink-soft); line-height:1.55;}
+  .popup-ico{flex:0 0 auto; font-size:20px;}
+  .popup-foot{padding:0 14px 14px; text-align:center;}
+  .popup-foot button{background:#eef1f4; border:1px solid #c7cfd8; border-radius:5px;
+    padding:6px 18px; font-weight:800; color:#333; cursor:default;
+    display:inline-flex; gap:6px; align-items:center;}
+
+  /* 개인화인증 로그인 */
+  .scr-plogin{padding:22px 18px; text-align:center;}
+  .pl-logo{font-weight:800; color:var(--mint-deep); font-size:15px; margin-bottom:16px;}
+  .pl-field{text-align:left; max-width:210px; margin:0 auto 9px;}
+  .pl-field label{display:block; font-size:10.5px; color:var(--muted); margin-bottom:3px;}
+  .pl-input{border:1.5px solid var(--danger); border-radius:5px; padding:7px 10px;
+    font-weight:800; color:var(--danger); background:#fff;}
+  .pl-login{margin:8px auto 0; max-width:210px; width:100%; background:#dfeee9;
+    border:2px solid var(--danger); color:#333; border-radius:6px; padding:8px;
+    font-weight:800; cursor:default; display:flex; gap:7px; align-items:center;
+    justify-content:center;}
+
+  /* 포털 (3탭 + 인증매체 카드) */
+  .scr-portal{border:1px solid var(--line-strong);}
+  .pt-top{background:#0f2f6b; color:#fff; padding:9px 12px; display:flex;
+    justify-content:space-between; align-items:center; font-size:11px;}
+  .pt-top b{font-weight:800;}
+  .pt-tabs{display:flex; gap:5px; padding:10px; background:#163a7d;
+    outline:2px solid var(--danger); outline-offset:-2px;}
+  .pt-tab{flex:1; background:#2350a0; color:#fff; border-radius:5px; padding:6px 5px;
+    font-size:9.5px; font-weight:700; text-align:center; line-height:1.3;}
+  .pt-cards{display:grid; grid-template-columns:repeat(4,1fr); gap:7px; padding:12px;
+    background:#f3f6fb;}
+  .pt-card{background:#fff; border:1px solid #d6deea; border-radius:8px; padding:12px 5px;
+    text-align:center; font-size:10px; font-weight:700; color:var(--ink-soft);
+    display:flex; flex-direction:column; gap:6px; align-items:center; min-height:64px;
+    justify-content:center;}
+  .pt-card .pc-ic{width:26px; height:26px; border-radius:50%; display:grid;
+    place-items:center; font-size:13px; color:#fff;}
+  .pt-card.c1 .pc-ic{background:#f0a500;} .pt-card.c2 .pc-ic{background:#16c79a;}
+  .pt-card.c3 .pc-ic{background:#3a7bd5;} .pt-card.add{border-style:dashed; color:var(--muted);}
+  .pt-card.add .pc-ic{background:#c4ccd6;}
+  .pt-card.star{position:relative;}
+  .pt-card.star::before{content:"★"; position:absolute; top:5px; left:6px;
+    color:#f0a500; font-size:11px;}
+
+  /* 인증매체 등록 */
+  .scr-reg{padding:16px; background:var(--surface-2);}
+  .reg-box{background:#fff; border:1px solid var(--line-strong); border-radius:10px;
+    padding:15px;}
+  .reg-box h5{font-size:13px; font-weight:800; text-align:center;}
+  .reg-box > p{font-size:10.5px; color:var(--muted); text-align:center; margin:6px 0 11px;}
+  .reg-sel{border:1px solid var(--line-strong); border-radius:5px; padding:7px 10px;
+    font-size:11px; font-weight:700; display:flex; justify-content:space-between;}
+  .reg-list{margin:9px 0 0; padding:0; list-style:none; font-size:11px;}
+  .reg-list li{padding:5px 8px; display:flex; align-items:center; gap:6px;}
+  .reg-list li .req{color:var(--danger); font-weight:800; font-size:10px;}
+  .reg-list li.brace{color:var(--mint-ink); position:relative;}
+  .reg-note{margin-top:9px; font-size:10.5px; color:var(--danger); font-weight:700;
+    text-align:center; background:var(--danger-bg); border-radius:6px; padding:6px;}
+
+  /* 통합인증 팝업 (재접속) */
+  .ap-win{max-width:280px; margin:0 auto; border:1px solid #b9c4cf; border-radius:8px;
+    overflow:hidden; box-shadow:var(--shadow); background:#fff;}
+  .ap-bar{background:#2b2b2b; color:#fff; padding:8px 11px; font-size:10.5px;}
+  .ap-bar .brand{color:var(--mint); font-weight:800; margin-right:6px;}
+  .ap-body{padding:14px;}
+  .ap-id{font-size:11px; color:var(--ink-soft); margin-bottom:11px;}
+  .ap-id b{color:var(--ink); font-weight:800;}
+  .ap-medias{display:flex; gap:8px; justify-content:center; margin-bottom:11px;}
+  .ap-m{flex:1; border:1px solid var(--line-strong); border-radius:7px; padding:10px 4px;
+    text-align:center; font-size:10px; font-weight:700; color:var(--ink-soft);}
+  .ap-m .am-ic{font-size:15px; display:block; margin-bottom:3px;}
+  .ap-body > p{font-size:10.5px; color:var(--muted); text-align:center;}
+
+  .m-tip{margin-top:8px; font-size:12.5px; color:var(--mint-ink);
+    background:#EEF8F5; border:1px solid #D2EBE3; border-radius:9px; padding:9px 12px;
+    line-height:1.55;}
+  .m-tip b{font-weight:800;}
+
+  /* 권한 등록 FLOW */
+  .flow-wrap{margin-top:18px; background:var(--surface); border:1px solid var(--line);
+    border-radius:var(--r-lg); padding:22px; box-shadow:var(--shadow);}
+  .flow-auto{display:inline-flex; align-items:center; gap:7px; font-size:12px;
+    font-weight:700; color:var(--mint-ink); background:#E6F8F3; border:1px solid #CDE7DF;
+    padding:6px 12px; border-radius:999px; margin-bottom:18px;}
+  .flow-steps{display:flex; align-items:stretch; gap:0; flex-wrap:wrap;}
+  .flow-node{flex:1 1 0; min-width:140px; background:var(--surface-2);
+    border:1px solid var(--line); border-radius:14px; padding:16px 14px; text-align:center;}
+  .flow-node .fn-no{display:inline-grid; place-items:center; width:26px; height:26px;
+    border-radius:50%; background:var(--mint); color:#fff; font-size:12px; font-weight:800;
+    margin-bottom:9px;}
+  .flow-node h5{font-size:14px; font-weight:800; letter-spacing:-.02em; line-height:1.35;}
+  .flow-node p{margin-top:5px; font-size:12px; color:var(--muted); line-height:1.5;}
+  .flow-arrow{flex:0 0 auto; display:grid; place-items:center; padding:0 6px;
+    color:var(--mint); font-size:18px; font-weight:800;}
+  @media (max-width:680px){
+    .flow-steps{flex-direction:column;}
+    .flow-arrow{transform:rotate(90deg); padding:6px 0;}
+  }
+
+  /* 상품 담당자 확인 */
+  .contact-cta{
+    margin-top:14px; display:inline-flex; align-items:center; gap:9px; cursor:pointer;
+    background:var(--ink); color:#fff; border:0; padding:12px 18px; border-radius:12px;
+    font-size:14px; font-weight:700; transition:.14s;
+  }
+  .contact-cta:hover{background:#0c1d1a;}
+  .contact-cta .cc-q{display:grid; place-items:center; width:20px; height:20px;
+    border-radius:50%; background:var(--mint); color:#fff; font-size:12px; font-weight:900;}
+  .contact-table{display:grid; gap:9px;}
+  .contact-row{
+    display:grid; grid-template-columns:1.4fr 1fr 0.8fr; gap:12px; align-items:center;
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md);
+    padding:14px 16px;
+  }
+  .contact-row.head{background:var(--surface-2); border-color:var(--line-strong);
+    font-size:12px; font-weight:800; color:var(--muted); padding:11px 16px;}
+  .contact-row .cr-name{font-size:14.5px; font-weight:700; letter-spacing:-.02em;}
+  .contact-row .cr-name span{display:block; font-size:12px; font-weight:500;
+    color:var(--muted); margin-top:2px;}
+  .contact-row .cr-dept{font-size:13.5px; color:var(--ink-soft);}
+  .contact-row .cr-tel{font-size:14px; font-weight:800; color:var(--mint-ink);
+    text-align:right; white-space:nowrap;}
+  .contact-row .cr-tel.todo{color:var(--muted-2); font-weight:600;}
+  @media (max-width:680px){
+    .contact-row,.contact-row.head{grid-template-columns:1fr; gap:4px; text-align:left;}
+    .contact-row .cr-tel{text-align:left;}
+    .contact-row.head{display:none;}
+    .contact-row .cr-dept::before{content:"담당 부서 "; color:var(--muted-2); font-weight:700;}
+    .contact-row .cr-tel::before{content:"내선 "; color:var(--muted-2); font-weight:700; font-size:12px;}
+  }
+
+  @media (max-width:720px){
+    .howto-grid{grid-template-columns:1fr;}
+    .howto-summary{position:static;}
+    .kv{flex-direction:column; gap:2px;}
+    .kv .k{flex:none;}
+    .sel-bar .actions{margin-left:0; width:100%;}
+    header.site{padding:28px 0 22px;}
+
+    /* 접속 매뉴얼 모바일 */
+    .modal-overlay{padding:0;}
+    .modal-box{border-radius:0; min-height:100%; max-width:100%;}
+    .modal-body{padding:18px 14px 28px;}
+    .mstep-grid, .mstep-grid.rev{grid-template-columns:1fr; gap:14px; padding:16px;}
+    .pt-tabs .pt-tab{font-size:8.5px;}
+    .manual-callout{flex-direction:column; align-items:flex-start;}
+    .manual-callout .mc-btn{width:100%; justify-content:center;}
+  }
+
+  /* ───── Print ───── */
+  @media print{
+    nav.steps, #target-select, #toTop, .no-print, .faq-search, .chips-row,
+    .modal-overlay, .manual-callout, .nav-manual, .contact-cta,
+    .sel-bar .actions{display:none !important;}
+    header.site{background:#fff; padding:0 0 16px;}
+    body{background:#fff;}
+    .panel{max-height:none !important;}
+    .panel-inner{display:block !important;}
+    .faq-a{max-height:none !important;}
+    .faq-a .inner{display:block !important;}
+    .acard,.checklist,.info-card,.mini,.howto-summary,.faq-item{
+      break-inside:avoid; box-shadow:none;}
+    details.basis{box-shadow:none;}
+    main{padding:10px 0;}
+    a[href]::after{content:"";}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <span class="logo">iM</span>
+      <b>iM뱅크</b>
+    </div>
+    <h1>영업점 근무 전 판매권한 체크가이드</h1>
+    <p class="sub">상품판매교육 · 자격증 보수교육 · 교육비 신청까지 한 번에 확인하세요</p>
+  </div>
+</header>
+
+<nav class="steps" id="stepNav">
+  <div class="wrap">
+    <a href="#target-select" data-sec="target-select">대상선택</a>
+    <a href="#sec-action" data-sec="sec-action" class="nav-guide hidden">Action</a>
+    <a href="#sec-product" data-sec="sec-product" class="nav-guide hidden">상품교육</a>
+    <a href="#sec-maintenance" data-sec="sec-maintenance" class="nav-guide nav-maint hidden">자격증 보수교육</a>
+    <a href="#sec-howto" data-sec="sec-howto" class="nav-guide nav-maint hidden">수강방법</a>
+    <a href="#sec-faq" data-sec="sec-faq" class="nav-guide hidden">FAQ</a>
+    <button type="button" class="nav-manual" id="navManual">📘 접속매뉴얼</button>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+
+    <!-- 1. 대상자 선택 -->
+    <section id="target-select">
+      <h2 class="q">누구를 위한 안내인가요?
+        <small>본인 유형을 선택하면, 지금 바로 해야 할 일부터 보여드립니다.</small>
+      </h2>
+      <div class="target-grid" id="targetGrid">
+        <button class="target-card" data-target="newbie">
+          <h3>신입행원 온보딩</h3>
+          <p>영업점 근무 시작 전 기본 판매교육을 확인합니다.</p>
+          <span class="go">시작하기</span>
+        </button>
+        <button class="target-card" data-target="returning">
+          <h3>복직직원 온보딩</h3>
+          <p>복직 후 상품판매권한과 자격증 보수교육 이수 여부를 확인합니다.</p>
+          <span class="go">시작하기</span>
+        </button>
+        <button class="target-card" data-target="peaktimer">
+          <h3>신규 채용 피크타이머 온보딩</h3>
+          <p>영업점 업무 수행 전 필요한 기본 판매교육을 확인합니다.</p>
+          <span class="go">시작하기</span>
+        </button>
+        <button class="target-card" data-target="transfer">
+          <h3>본부부서 → 영업점 전입직원 온보딩</h3>
+          <p>영업점 전입 전 판매권한과 자격증 보수교육 상태를 점검합니다.</p>
+          <span class="go">시작하기</span>
+        </button>
+      </div>
+
+      <div class="manual-callout">
+        <div class="mc-ico">💻</div>
+        <div class="mc-txt">
+          <b>PC·단말기 접속이 처음이거나 오랜만이신가요?</b>
+          <span>윈도우 로그인부터 Nexpia 접속, 개인화인증(iM PASS) 등록까지 순서대로 안내해 드립니다.</span>
+        </div>
+        <button class="mc-btn" id="manualOpenTop">📘 PC 최초 접속 매뉴얼 보기</button>
+      </div>
+    </section>
+    <div id="guide" class="hidden">
+
+      <div class="sel-bar no-print-bar">
+        <div class="who">선택한 대상자<b id="selName">—</b></div>
+        <div class="actions">
+          <button class="btn-ghost" id="reselect">↺ 대상 다시 선택</button>
+          <button class="btn-ghost" id="printBtn">🖶 인쇄하기</button>
+        </div>
+      </div>
+
+      <div id="introZone"></div>
+
+      <!-- 체크리스트 -->
+      <section id="sec-checklist">
+        <div class="checklist">
+          <div class="ch-head">
+            <h3>나의 사전점검 체크리스트</h3>
+            <span class="ch-progress" id="chProgress">0 / 0 완료</span>
+          </div>
+          <div class="ch-bar"><i id="chBar"></i></div>
+          <div id="checklistItems"></div>
+        </div>
+      </section>
+
+      <!-- ACTION -->
+      <section id="sec-action" class="sec-gap">
+        <p class="sec-eyebrow">Action First</p>
+        <h2 class="lead" style="margin-top:2px;">아래 항목부터 먼저 확인하세요.</h2>
+        <p class="sec-desc">각 카드의 버튼을 눌러 상세 내용을 확인하세요.</p>
+        <div class="action-grid" id="actionGrid"></div>
+      </section>
+
+      <!-- 상품교육 -->
+      <section id="sec-product" class="sec-gap">
+        <p class="sec-eyebrow">상품교육</p>
+        <h2 class="sec-title">금융상품숙지의무 6개 강의</h2>
+        <p class="sec-desc">영업점에서 금융상품을 판매하기 위해 기본적으로 이수해야 하는 상품별 숙지교육입니다.
+          아래 6개 강의는 모두 <b>상품 판매 전 확인</b>이 필요합니다.</p>
+        <div class="alert info hidden" id="ptProductNote"><span class="ai">P</span>
+          <div>피크타이머는 아래 6개 강의 중 <b>강의 1(수신 상품 + 신용카드 상품)</b>만 이수하면 됩니다.
+          추가로 신규 출시 신상품을 판매하는 경우 <b>신상품 교육</b>을 별도로 수강하세요.
+          (ETF 상품은 판매하지 않으므로 ETF 교육은 필요하지 않습니다.)</div></div>
+        <div class="grid-cards">
+          <div class="mini"><span class="num">강의 1</span><h4>수신 상품 + 신용카드 상품</h4><span class="pill">상품 판매 전 확인 필요</span></div>
+          <div class="mini"><span class="num">강의 2</span><h4>신탁 + 퇴직연금 + 일임형 ISA</h4><span class="pill">상품 판매 전 확인 필요</span></div>
+          <div class="mini"><span class="num">강의 3</span><h4>펀드</h4><span class="pill">상품 판매 전 확인 필요</span></div>
+          <div class="mini"><span class="num">강의 4</span><h4>개인여신상품 + 기업여신상품</h4><span class="pill">상품 판매 전 확인 필요</span></div>
+          <div class="mini"><span class="num">강의 5</span><h4>외환 상품 + 자금운용상품</h4><span class="pill">상품 판매 전 확인 필요</span></div>
+          <div class="mini"><span class="num">강의 6</span><h4>방카슈랑스</h4><span class="pill">상품 판매 전 확인 필요</span></div>
+        </div>
+
+        <div class="info-card" style="margin-top:22px;">
+          <h4>신상품 · ETF 상품숙지교육은 별도 수강이 필요할 수 있습니다</h4>
+          <ul>
+            <li>특정 상품이 <b>신규로 출시</b>되는 경우, 해당 신상품 숙지의무교육을 별도로 수강해야 할 수 있습니다.</li>
+            <li><b>ETF상품</b>을 판매하기 위해서는 ETF상품 숙지의무교육을 별도로 수강해야 할 수 있습니다.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 자격증 보수교육 대상 자격증 (복직/전입) -->
+      <section id="sec-maintenance" class="sec-gap nav-maint-sec">
+        <p class="sec-eyebrow">자격증 보수교육</p>
+        <h2 class="sec-title">자격증 보수교육 안내</h2>
+        <p class="sec-desc">은행에서 관리하는 영업필수자격증 중 일부는 취득 후에도 일정 주기마다 자격증 보수교육을 이수해야
+          판매권한이 유지됩니다. 미이수 시 시스템상 상품 판매자격이 없는 것으로 표시되어 창구 판매가 제한될 수 있습니다.</p>
+
+        <div class="grid-cards">
+          <div class="mini"><span class="num">자격증 1</span><h4>펀드투자권유자문인력</h4><span class="pill">자격증 보수교육 대상</span></div>
+          <div class="mini"><span class="num">자격증 2</span><h4>파생상품투자권유자문인력</h4><span class="pill">자격증 보수교육 대상</span></div>
+          <div class="mini"><span class="num">자격증 3</span><h4>보험대리점 — 생명 · 손해 · 제3보험</h4><span class="pill">자격증 보수교육 대상</span></div>
+        </div>
+
+        <div class="info-card" style="margin-top:22px;">
+          <h4>펀드 · 파생상품투자권유자문인력</h4>
+          <ul>
+            <li>2023년부터 관련 규정에 따라 <b>유지자격자는 매년 자격증 보수교육을 이수</b>해야 한다는 취지로 운영됩니다.</li>
+            <li>복직 전 또는 본부부서에서 영업점으로 전입하기 전에 <b>반드시 수강</b>하시기 바랍니다.</li>
+            <li>미이수 시 창구에서 금융투자상품 판매 진행이 <b>불가능</b>할 수 있습니다.</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h4>보험대리점 — 생명보험 · 손해보험 · 제3보험</h4>
+          <ul>
+            <li>자격증 등록일로부터 <b>2년 경과 시마다</b> 자격증 보수교육 대상이 될 수 있습니다.</li>
+            <li>2년이 되는 날로부터 <b>6개월 이내</b>에 자격증별로 각각 자격증 보수교육을 이수해야 한다는 취지입니다.</li>
+            <li>복직과 동시에 방카 담당자로 지정되는 경우, 개별적으로 자격증 보수교육을 진행해야 합니다.</li>
+            <li>사전에 자격증 보수교육 대상 여부를 <b>이클린보험서비스</b> 등을 통해 확인하시기 바랍니다.</li>
+          </ul>
+          <div style="margin-top:14px; display:grid; gap:10px;">
+            <div class="alert info"><span class="ai">2</span>
+              <div><b>CASE 2.</b> 본부 일괄 자격증 보수교육 대상자 명단에 본인이 포함되지 않은 경우 — 개인별 자격증 보수교육 기간이 도래했거나
+              영업점 방카 담당자로 지정될 예정이라면 <b>개별적으로</b> 자격증 보수교육을 진행해야 합니다.</div></div>
+            <div class="alert info"><span class="ai">3</span>
+              <div><b>CASE 3.</b> 복직과 동시에 방카 담당자로 지정되는 경우 — <b>개별적으로</b> 자격증 보수교육을 진행해야 합니다.</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 수강방법 (복직/전입) -->
+      <section id="sec-howto" class="sec-gap nav-maint-sec">
+        <p class="sec-eyebrow">수강방법</p>
+        <h2 class="sec-title">자격증 보수교육 수강 방법</h2>
+        <p class="sec-desc">자격증 유형에 따라 수강 기관과 절차가 다릅니다. 아래 절차대로 진행하세요.</p>
+
+        <!-- 펀드/파생 -->
+        <div class="howto-block">
+          <div class="howto-grid">
+            <div class="howto-summary">
+              <div class="tag2">펀드 / 파생</div>
+              <h4>금융투자전문인력 자격증 보수교육</h4>
+              <p>금융투자교육원에서 수강합니다. APP 설치 시 모바일 수강도 가능합니다.</p>
+              <div class="chips">
+                <span class="chip">www.kifin.or.kr</span>
+                <span class="chip">이러닝</span>
+                <span class="chip">조기 수료 필수</span>
+              </div>
+            </div>
+            <div class="steps-list">
+              <div class="step"><span class="dot">1</span><h5>금융투자교육원 접속</h5>
+                <p>www.kifin.or.kr 로 접속합니다.</p>
+                <div class="sub">금융투자교육원 <code>APP</code> 설치 후 모바일 수강도 가능합니다.</div></div>
+              <div class="step"><span class="dot">2</span><h5>로그인</h5>
+                <p>미가입자는 회원가입이 필요합니다. 아이디·비밀번호 분실 시 찾기 기능을 활용하세요.</p></div>
+              <div class="step"><span class="dot">3</span><h5>이러닝 클릭</h5></div>
+              <div class="step"><span class="dot">4</span><h5>화면 중앙 SEARCH에서 과목 검색</h5>
+                <div class="sub">펀드 : <code>펀드투자권유자문인력(대행인) 보수</code> 검색<br>
+                파생 : <code>파생상품투자권유자문인력 보수</code> 검색</div></div>
+              <div class="step"><span class="dot">5</span><h5>해당 과목 클릭 후 수강 신청 및 결제</h5></div>
+              <div class="step"><span class="dot">6</span><h5>수강 완료 후 수료증 출력</h5>
+                <p>진도율 100% 달성 후 <b>조기 수료 버튼</b>을 클릭해야 수료가 인정됩니다.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 보험대리점 -->
+        <div class="howto-block" style="margin-top:34px;">
+          <div class="howto-grid">
+            <div class="howto-summary">
+              <div class="tag2">보험대리점</div>
+              <h4>생명 / 손해 / 제3보험 자격증 보수교육</h4>
+              <p>보험연수원에서 수강합니다. 수강신청은 PC로만 가능합니다.</p>
+              <div class="chips">
+                <span class="chip">is.in.or.kr</span>
+                <span class="chip">PC 신청</span>
+                <span class="chip">예시 15,000원</span>
+              </div>
+            </div>
+            <div class="steps-list">
+              <div class="step"><span class="dot">1</span><h5>보험연수원 접속</h5>
+                <p>is.in.or.kr 로 접속합니다.</p>
+                <div class="sub">수강신청은 <code>PC로만</code> 가능합니다. 보험연수원 APP 설치 후 모바일 수강은 가능합니다.</div></div>
+              <div class="step"><span class="dot">2</span><h5>로그인</h5>
+                <p>미가입자는 회원가입이 필요합니다. 아이디·비밀번호 분실 시 찾기 기능을 활용하세요.</p></div>
+              <div class="step"><span class="dot">3</span><h5>[보험대리점 수강신청] → [자격증 보수교육] 클릭</h5>
+                <p>화면 중앙에서 선택합니다.</p></div>
+              <div class="step"><span class="dot">4</span><h5>[자격증 보수교육 대상 여부 확인] 클릭</h5></div>
+              <div class="step"><span class="dot">5</span><h5>해당 과목 클릭 후 수강 신청 및 결제</h5>
+                <div class="sub">교육비 예시 : <code>15,000원</code></div></div>
+              <div class="step"><span class="dot">6</span><h5>수강 완료 후 수료증 출력</h5></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 상품판매권한 자동 등록 FLOW -->
+      <section id="flow-block" class="sec-gap">
+        <p class="sec-eyebrow">권한 등록 FLOW</p>
+        <h2 class="sec-title">상품판매권한은 이렇게 등록됩니다</h2>
+        <p class="sec-desc">신상품·ETF 등 일부 상품교육의 판매권한은 임직원이 직접 등록하지 않아도
+          RPA를 통해 자동으로 처리됩니다. 아래 흐름만 참고하세요.</p>
+        <div class="flow-wrap">
+          <span class="flow-auto">⚙️ 임직원 직접 처리 아님 · RPA 자동 진행</span>
+          <div class="flow-steps">
+            <div class="flow-node"><span class="fn-no">1</span>
+              <h5>해당 교육 이수</h5><p>신상품 · ETF 등 상품숙지교육 수강 완료</p></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node"><span class="fn-no">2</span>
+              <h5>RPA 자동 처리</h5><p>매일 9시부터 1시간 단위로 자동 등록 예정</p></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node"><span class="fn-no">3</span>
+              <h5>NEXPIA 권한 등록</h5><p>상품판매권한이 시스템에 전산 등록</p></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node"><span class="fn-no">4</span>
+              <h5>반영 여부 확인</h5><p>NEXPIA 등 관련 시스템에서 최종 확인</p></div>
+          </div>
+          <div class="note-sm">방카슈랑스 교육 · 방문판매인력교육 등은 자동 등록 대상이 아닐 수 있습니다.
+            상품 판매 거래 시 “상품교육 미이수” 오류가 뜨면 상품 담당자 또는 관련 부서에 개별 내선 연락이 필요할 수 있습니다.</div>
+          <button class="contact-cta" id="contactOpen" type="button">
+            <span class="cc-q">?</span> 상품 담당자 바로 확인하기</button>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="sec-faq" class="sec-gap">
+        <p class="sec-eyebrow">FAQ</p>
+        <h2 class="sec-title">궁금한 내용을 검색해보세요.</h2>
+        <p class="sec-desc">키워드를 입력하면 관련 질문만 추려서 보여드립니다.</p>
+        <div class="faq-search no-print">
+          <input id="faqInput" type="text" autocomplete="off"
+            placeholder="예: 복직, ETF, 펀드 자격증 보수교육, 보험대리점, 교육비 신청, 상품교육 미이수" />
+          <button class="faq-clear" id="faqClear">초기화</button>
+        </div>
+        <div class="chips-row no-print" id="qChips"></div>
+        <div class="faq-list" id="faqList"></div>
+        <div class="faq-empty" id="faqEmpty">검색 결과가 없습니다. 다른 키워드로 검색해보세요.</div>
+      </section>
+
+      <!-- 근거 모아보기 -->
+      <section class="sec-gap">
+        <details class="basis">
+          <summary>관련 근거 모아보기 <span class="chev">▾</span></summary>
+          <div class="body">
+            <div class="basis-group">
+              <h5>1. 금융상품숙지의무 관련 근거</h5>
+              <ul>
+                <li>금융소비자보호법 제21조 제7호 및 동법 시행령 제16조 제3항 취지</li>
+                <li>내부통제기준에 따른 직무수행교육을 받지 않은 자가 계약 체결 권유와 관련된 업무를 수행하지 않도록 관리해야 함</li>
+              </ul>
+            </div>
+            <div class="basis-group">
+              <h5>2. 방문판매인력교육 관련 근거</h5>
+              <ul>
+                <li>은행권 방문판매 모범규준 제5조 취지</li>
+                <li>방문판매인력에 대한 방문판매 시 준수사항 및 금지행위 등 연 1회 이상 교육</li>
+              </ul>
+            </div>
+            <div class="basis-group">
+              <h5>3. 자격증 보수교육 관련 근거</h5>
+              <ul>
+                <li>펀드투자권유자문인력 및 파생상품투자권유자문인력은 관련 규정에 따라 유지자격자가 매년 자격증 보수교육을 이수해야 한다는 취지</li>
+                <li>보험대리점(생명·손해·제3보험)은 자격증 등록일로부터 2년 경과 시마다 자격증 보수교육 대상이 될 수 있으며, 2년이 되는 날로부터 6개월 이내에 자격증별로 각각 자격증 보수교육을 이수해야 한다는 취지</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+      </section>
+
+    </div><!-- /#guide -->
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>본 안내는 임직원의 이해를 돕기 위한 요약 자료입니다. 실제 업무 적용 시 최신 법령, 감독규정,
+       내부통제기준, 관련 부서 안내를 최종 확인하시기 바랍니다. 교육 이수 후에도 실제 판매권한 반영
+       여부는 NEXPIA 등 관련 시스템에서 확인해야 합니다.</p>
+  </div>
+</footer>
+
+<!-- ═════ PC 최초 접속 매뉴얼 모달 ═════ -->
+<div class="modal-overlay hidden" id="manualModal" role="dialog" aria-modal="true" aria-labelledby="manualTitle">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div>
+        <h2 id="manualTitle">PC 최초 접속 매뉴얼</h2>
+        <p>윈도우 로그인 → Nexpia 접속 → 개인화인증(iM PASS) 등록 → Nexpia 재접속.
+           처음이거나 오랜만이어도 순서대로 따라 하시면 됩니다.</p>
+      </div>
+      <button class="modal-close" id="manualClose" aria-label="매뉴얼 닫기">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="m-intro"><span class="mi-ic">!</span>
+        <div>아래 화면은 이해를 돕기 위한 <b>예시 이미지</b>이며, 실제 행번·비밀번호는 본인 정보로 입력하세요.
+        실제 화면과 일부 다를 수 있으며, 문제가 있으면 로그인 문의 내선(6533·2404·2416)으로 연락하시기 바랍니다.</div>
+      </div>
+
+      <!-- STEP 01 -->
+      <div class="mstep">
+        <div class="mstep-head"><span class="mstep-no">01</span><h3>윈도우 접속</h3>
+          <span class="mstep-tag">PC 켜기</span></div>
+        <div class="mstep-grid">
+          <ol class="mstep-list">
+            <li><b>계정</b>은 본인 <b>행번</b>을 입력합니다.</li>
+            <li><b>암호</b>는 <code>dgb@행번뒤4자리</code> 형식으로 입력합니다.
+              <div class="msub">예) 행번이 …<b>1234</b>라면 암호는 <code>dgb@1234</code></div></li>
+          </ol>
+          <div class="scr scr-win">
+            <div class="win-ava">👤</div>
+            <div class="win-id">본인 행번<span class="cap">계정</span></div>
+            <div class="win-pw"><span>dgb@행번뒤4자리</span><i>→</i></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 02 -->
+      <div class="mstep">
+        <div class="mstep-head"><span class="mstep-no">02</span><h3>Nexpia 접속</h3>
+          <span class="mstep-tag">최초 1회</span></div>
+        <div class="mstep-grid">
+          <ol class="mstep-list">
+            <li>계정에 본인 <b>행번</b>을 입력합니다.</li>
+            <li>접속 구분에서 <b>‘통합단말’</b>을 선택합니다.</li>
+            <li><b>생체 인증</b>을 클릭합니다.</li>
+            <li class="warn-li">최초에는 등록된 인증매체가 없어, 아래 안내 팝업이 뜨면 <b>[확인]</b>을 눌러
+              인증매체 등록 페이지로 이동합니다.</li>
+          </ol>
+          <div class="scr scr-nexpia">
+            <div class="nx-top">iM뱅크 Nexpia 로그인</div>
+            <div class="nx-row">
+              <span class="nx-input">2✱✱✱✱✱✱ <em>행번</em></span>
+              <button class="nx-bio hl" type="button">생체 인증 <em>Click!</em></button>
+            </div>
+            <div class="nx-row"><span class="nx-sel hl">통합단말 <i>▾</i></span></div>
+            <div class="nx-links">
+              <span class="dl">[다운로드] 개인화인증 설치 프로그램</span>
+              <span class="dl">[다운로드] 인터넷옵션 자동설정 실행</span>
+              <span class="dl">[다운로드] 통합단말 삭제 실행</span>
+              <span>로그인 문의 : 내선 6533, 2404, 2416</span>
+            </div>
+          </div>
+        </div>
+        <div class="mstep-grid rev">
+          <div class="scr scr-popup">
+            <div class="popup-win">
+              <div class="popup-bar"><span>웹 페이지 메시지</span><i>✕</i></div>
+              <div class="popup-body"><span class="popup-ico">⚠️</span>
+                <p>사용 가능한 인증매체가 없어 인증매체 등록 페이지로 전환합니다.
+                행번과 Sky 접속 비밀번호를 입력하여 로그인 후 인증매체를 등록하시기 바랍니다.<br>
+                ☞ 등록 후 다시 로그인 시도</p></div>
+              <div class="popup-foot"><button type="button">확인 <em>Click!</em></button></div>
+            </div>
+          </div>
+          <div class="m-tip">위 팝업이 뜨면 <b>[확인]</b>을 눌러 <b>03 개인화인증시스템</b> 등록을 먼저 진행합니다.
+            인증매체 등록을 마친 뒤 다시 Nexpia에 접속하면 됩니다.</div>
+        </div>
+      </div>
+
+      <!-- STEP 03 -->
+      <div class="mstep">
+        <div class="mstep-head"><span class="mstep-no">03</span><h3>개인화인증시스템 접속 · 인증매체 등록</h3>
+          <span class="mstep-tag">핵심 단계</span></div>
+
+        <div class="mstep-grid">
+          <ol class="mstep-list">
+            <li><b>아이디</b> : 본인 행번</li>
+            <li><b>패스워드</b> : <code>!s행번</code> 형식
+              <div class="msub">예) 행번이 <b>2150669</b>라면 패스워드는 <code>!s2150669</code></div></li>
+            <li><b>로그인</b>을 클릭합니다.</li>
+          </ol>
+          <div class="scr scr-plogin">
+            <div class="pl-logo">iM뱅크 · 개인화인증</div>
+            <div class="pl-field"><label>아이디</label><div class="pl-input">본인 행번</div></div>
+            <div class="pl-field"><label>패스워드</label><div class="pl-input">!s행번</div></div>
+            <button class="pl-login" type="button">로그인 <em>Click!</em></button>
+          </div>
+        </div>
+
+        <div class="mstep-grid rev">
+          <div class="scr scr-portal">
+            <div class="pt-top"><b>iM뱅크</b><span>LOGIN ID : 본인행번</span></div>
+            <div class="pt-tabs">
+              <span class="pt-tab">1. iM PASS<br>앱 다운로드</span>
+              <span class="pt-tab">2. iM PASS<br>앱 인증</span>
+              <span class="pt-tab">3. PC 통합인증<br>설치 프로그램</span>
+            </div>
+            <div class="pt-cards">
+              <div class="pt-card star c1"><span class="pc-ic">🙂</span>(PC) 안면</div>
+              <div class="pt-card c2"><span class="pc-ic">🔑</span>(모바일) mOTP</div>
+              <div class="pt-card c3"><span class="pc-ic">☝️</span>(모바일) 지문</div>
+              <div class="pt-card add"><span class="pc-ic">＋</span>인증매체 등록</div>
+            </div>
+          </div>
+          <ol class="mstep-list">
+            <li>상단 <b>1 → 2 → 3 순서</b>대로 진행합니다.</li>
+            <li><b>① iM PASS 앱 다운로드</b> : 휴대폰 기종(안드로이드/iOS)에 맞는 QR을 스캔해 앱 설치</li>
+            <li><b>② iM PASS 앱 인증</b> : PC에 뜬 QR코드 또는 인증코드를, 휴대폰 iM PASS 앱의
+              <b>‘QR코드 스캔’</b>으로 인증</li>
+            <li><b>③ PC 통합인증 설치 프로그램</b> : <code>DGB OnePassPc</code> 다운로드 후 실행·설치</li>
+          </ol>
+        </div>
+
+        <div class="mstep-grid">
+          <ol class="mstep-list">
+            <li><b>인증매체 등록하기</b>를 클릭합니다.</li>
+            <li><b>(PC) 안면</b> — <b class="warn-li">필수 등록</b></li>
+            <li><b>(모바일) 지문/FaceID</b> 또는 <b>(모바일) mOTP</b> 중
+              <b class="warn-li">하나 이상 필수 등록</b></li>
+          </ol>
+          <div class="scr scr-reg">
+            <div class="reg-box">
+              <h5>인증매체 등록</h5>
+              <p>등록하려는 인증매체를 선택한 후 다음 버튼을 클릭하세요.</p>
+              <div class="reg-sel">(PC) 안면 <i>▾</i></div>
+              <ul class="reg-list">
+                <li>(PC) 안면 <span class="req">필수 등록</span></li>
+                <li class="brace">(모바일) 지문/FaceID</li>
+                <li class="brace">(모바일) mOTP</li>
+              </ul>
+              <div class="reg-note">모바일 인증매체 둘 중 하나 이상 필수 등록</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 04 -->
+      <div class="mstep">
+        <div class="mstep-head"><span class="mstep-no">04</span><h3>Nexpia 재접속</h3>
+          <span class="mstep-tag">마무리</span></div>
+        <div class="mstep-grid">
+          <ol class="mstep-list">
+            <li>계정에 본인 <b>행번</b>을 입력합니다.</li>
+            <li>접속 구분에서 <b>‘통합단말’</b>을 선택합니다.</li>
+            <li><b>생체 인증</b>을 클릭합니다.</li>
+            <li>팝업창에서 <b>등록한 인증매체</b>(PC안면 · mOTP · 지문 등)를 선택해 <b>인증을 진행</b>하면 접속 완료!</li>
+          </ol>
+          <div class="scr scr-authpop">
+            <div class="ap-win">
+              <div class="ap-bar"><span class="brand">iM뱅크</span>OnePass 통합인증 서비스</div>
+              <div class="ap-body">
+                <div class="ap-id">USER ID <b>본인행번</b></div>
+                <div class="ap-medias">
+                  <span class="ap-m"><span class="am-ic">🙂</span>PC안면</span>
+                  <span class="ap-m"><span class="am-ic">🔑</span>mOTP</span>
+                  <span class="ap-m"><span class="am-ic">☝️</span>지문</span>
+                </div>
+                <p>인증매체 선택을 통해 인증을 진행해 주세요.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m-tip">✅ 이제 매번 접속할 때는 <b>① 행번 입력 → ② 통합단말 선택 → ③ 생체 인증 →
+          ④ 등록한 인증매체로 인증</b> 순서만 반복하면 됩니다.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═════ 상품 담당자 한눈에 보기 모달 ═════ -->
+<div class="modal-overlay hidden" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div>
+        <h2 id="contactTitle">상품 담당자 한눈에 보기</h2>
+        <p>“상품교육 미이수” 오류 등 권한 관련 문의 시 아래 담당 부서·내선으로 연락하세요.</p>
+      </div>
+      <button class="modal-close" id="contactClose" aria-label="닫기">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="m-intro"><span class="mi-ic">!</span>
+        <div>아래 담당 부서·내선번호는 <b>예시 양식</b>입니다. 실제 담당자 정보는 최신 내부 안내 기준으로
+        입력·수정하여 사용하시기 바랍니다.</div>
+      </div>
+      <div class="contact-table" id="contactTable"></div>
+    </div>
+  </div>
+</div>
+
+<button id="toTop" aria-label="맨 위로 이동">↑</button>
+
+<script>
+/* ============================================================
+   데이터 모델
+   ============================================================ */
+const A = {
+  visit: {
+    cls:"req", badge:"필수",
+    title:(t)=> t==="returning"||t==="transfer" ? "방문판매인력교육 이수 여부 확인" : "방문판매인력교육 이수",
+    desc:"영업점 및 본부부서 직원이 방문판매 관련 준수사항과 금지행위를 숙지하기 위한 교육입니다.",
+    btns:[{label:"수강방법 보기",to:"sec-product",primary:true},{type:"why"},{type:"risk"}],
+    why:"방문판매인력교육은 방문판매 시 준수사항과 금지행위를 숙지하기 위한 교육입니다. 은행권 방문판매 모범규준 제5조 취지에 따라 방문판매인력에 대한 직무교육이 필요합니다.",
+    risk:"교육 미이수 시 방문판매 관련 업무 수행 또는 상품판매권한 관리에 제한이 발생할 수 있으며, 실제 판매 가능 여부는 관련 시스템 및 담당부서 확인이 필요합니다."
+  },
+  product: {
+    cls:"req", badge:"필수",
+    title:(t)=> t==="returning"||t==="transfer" ? "금융상품숙지의무 6개 강의 이수 여부 확인" : "금융상품숙지의무 6개 강의 이수",
+    desc:"영업점에서 금융상품을 판매하기 전 상품별 주요 내용과 유의사항을 숙지하기 위한 교육입니다.",
+    btns:[{label:"6개 강의 보기",to:"sec-product",primary:true},{type:"why"},{type:"risk"}],
+    why:"금융상품 판매 또는 계약체결 권유 업무는 금융소비자 보호와 직접 연결됩니다. 금융소비자보호법 제21조 제7호 및 동법 시행령 제16조 제3항 취지에 따라, 내부통제기준에 따른 직무수행교육을 받지 않은 직원이 계약체결 권유 관련 업무를 수행하지 않도록 관리할 필요가 있습니다.",
+    risk:"해당 상품의 숙지의무교육을 이수하지 않은 경우, 상품판매권한이 등록되지 않거나 판매 거래 시 “상품교육 미이수” 오류가 발생할 수 있습니다."
+  },
+  etf: {
+    cls:"opt", badge:"해당 시",
+    title:()=>"신상품 · ETF 상품숙지교육 확인",
+    desc:"신상품 또는 ETF상품을 판매하는 경우 별도 숙지교육이 필요할 수 있습니다.",
+    btns:[{label:"해당 교육 보기",to:"sec-product",primary:true},{label:"권한등록 방식 보기",to:"flow-block"},{type:"why"},{type:"risk"}],
+    why:"기본 금융상품숙지의무교육을 이수했더라도, 특정 신상품이나 ETF상품은 별도 상품 특성과 판매 유의사항을 숙지해야 하므로 별도 교육이 필요할 수 있습니다.",
+    risk:"신상품 또는 ETF상품은 별도 교육 이수 여부에 따라 NEXPIA 상품판매권한 등록이 필요할 수 있습니다. 일부 교육은 RPA를 통해 매일 9시부터 1시간 단위로 자동 등록될 예정이나, 실제 반영 여부는 시스템에서 확인해야 합니다."
+  },
+  product_pt: {
+    cls:"req", badge:"필수",
+    title:()=>"금융상품숙지의무 강의 1(수신 상품 + 신용카드 상품) 이수",
+    desc:"피크타이머는 6개 강의 중 수신 상품 + 신용카드 상품 판매에 필요한 강의 1만 이수하면 됩니다.",
+    btns:[{label:"강의 보기",to:"sec-product",primary:true},{type:"why"},{type:"risk"}],
+    why:"금융상품 판매 또는 계약체결 권유 업무는 금융소비자 보호와 직접 연결됩니다. 금융소비자보호법 제21조 제7호 및 동법 시행령 제16조 제3항 취지에 따라, 판매하는 상품(수신·신용카드)에 대한 직무수행교육을 이수해야 합니다.",
+    risk:"해당 강의를 이수하지 않은 경우, 상품판매권한이 등록되지 않거나 판매 거래 시 “상품교육 미이수” 오류가 발생할 수 있습니다."
+  },
+  newprod_pt: {
+    cls:"opt", badge:"해당 시",
+    title:()=>"신상품 상품숙지교육 확인",
+    desc:"신규로 출시된 신상품을 판매하는 경우 해당 신상품 숙지교육을 별도로 수강해야 할 수 있습니다.",
+    btns:[{label:"해당 교육 보기",to:"sec-product",primary:true},{label:"권한등록 방식 보기",to:"flow-block"},{type:"why"},{type:"risk"}],
+    why:"기본 상품숙지교육을 이수했더라도, 특정 신상품은 별도 상품 특성과 판매 유의사항을 숙지해야 하므로 별도 교육이 필요할 수 있습니다.",
+    risk:"신상품은 별도 교육 이수 여부에 따라 NEXPIA 상품판매권한 등록이 필요할 수 있습니다. 일부 교육은 RPA를 통해 매일 9시부터 1시간 단위로 자동 등록될 예정이나, 실제 반영 여부는 시스템에서 확인해야 합니다."
+  },
+  fund: {
+    cls:"req", badge:"필수",
+    title:()=>"펀드 · 파생상품투자권유자문인력 자격증 보수교육 대상 여부 확인",
+    desc:(t)=> t==="transfer"
+      ? "본부부서에서 영업점으로 전입하는 직원은 금융투자상품 판매권한이 실제 창구 업무와 연결되므로, 자격증 보수교육 이수 여부를 먼저 확인해야 합니다."
+      : "복직 후 영업점에서 금융투자상품을 판매하려면 자격증 보수교육 이수 여부를 먼저 확인해야 합니다.",
+    btns:[{label:"대상 여부 확인",to:"sec-maintenance",primary:true},{label:"수강방법 보기",to:"sec-howto"},{type:"why"},{type:"risk"}],
+    why:"펀드투자권유자문인력 및 파생상품투자권유자문인력은 관련 자격 유지와 상품 판매권한 관리를 위해 자격증 보수교육 이수 여부 확인이 필요합니다. 특히 복직 또는 영업점 전입 시 미이수 상태라면 창구에서 금융투자상품 판매자격이 없는 것으로 표시될 수 있습니다.",
+    risk:(t)=> t==="transfer"
+      ? "영업점 전입 후 창구에서 금융투자상품 판매자격이 없는 것으로 표시되어 판매 진행이 불가능할 수 있습니다."
+      : "창구에서 금융투자상품 판매자격이 없는 것으로 표시되어 판매 진행이 불가능할 수 있습니다."
+  },
+  insurance: {
+    cls:"rec", badge:"권장 / 해당 시",
+    title:()=>"보험대리점 자격증 보수교육 대상 여부 확인",
+    desc:(t)=> t==="transfer"
+      ? "영업점 전입 후 방카슈랑스 담당자로 지정될 수 있으므로 생명보험·손해보험·제3보험 자격증 보수교육 대상 여부를 미리 확인하는 것을 권장합니다."
+      : "복직과 동시에 방카슈랑스 담당자로 지정될 수 있으므로 생명보험·손해보험·제3보험 자격증 보수교육 대상 여부를 미리 확인하는 것을 권장합니다.",
+    btns:[{label:"대상 여부 확인",to:"sec-maintenance",primary:true},{label:"수강방법 보기",to:"sec-howto"},{type:"why"},{type:"risk"}],
+    why:"생명보험, 손해보험, 제3보험 보험대리점 자격은 등록일로부터 일정 기간 경과 시 자격증 보수교육 대상이 될 수 있습니다. 방카슈랑스 담당자로 지정되는 경우 판매업무 수행 전 자격증 보수교육 이수 여부를 확인해야 합니다.",
+    risk:"방카슈랑스 담당자로 지정되더라도 필요한 자격증 보수교육을 이수하지 않은 경우 관련 상품 판매업무 수행이 제한될 수 있습니다."
+  }
+};
+
+const TARGETS = {
+  newbie:{
+    name:"신입행원 온보딩", maint:false,
+    cheer:`iM뱅크에서의 첫 출발을 진심으로 환영합니다! 모든 게 처음이라 낯설고 긴장되겠지만, 아래 항목부터 하나씩 확인하면 충분합니다. 멋진 시작을 응원합니다.`,
+    intro:`신입행원은 영업점 근무 전 기본 상품판매교육을 이수하여야 합니다. 또한 신규로 출시된 신상품을 판매하기 위해서는 해당 상품과 관련한 별도 교육을 수강하셔야 합니다.`,
+    alert:null,
+    actions:["visit","product","etf"],
+    checklist:["방문판매인력교육 이수","금융상품숙지의무 6개 강의 확인","신상품/ETF 관련 안내 확인"]
+  },
+  returning:{
+    name:"복직직원 온보딩", maint:true,
+    cheer:`다시 돌아오신 것을 진심으로 환영합니다. 잠시 자리를 비우셨다가 돌아오는 길이 낯설고 걱정되는 마음이 드는 건 너무나 자연스러운 일이에요. 그동안의 공백은 차근차근 채워가면 됩니다. 아래 항목만 하나씩 짚어보시면 충분해요. 다시 함께하게 되어 반갑습니다 — 잘 적응하실 거예요, 화이팅!`,
+    intro:`복직직원은 복직 후 영업점에서 바로 상품판매 업무를 수행할 수 있으므로, 판매교육과 자격증 보수교육 상태를 먼저 점검해야 합니다.`,
+    alert:`복직 전 자격증 보수교육 이수 여부를 반드시 확인하세요. 미이수 시 창구에서 금융투자상품 판매권한이 없는 것으로 표시되어 판매 진행이 불가능할 수 있습니다.`,
+    actions:["visit","product","etf","fund","insurance"],
+    checklist:["방문판매인력교육 이수 여부 확인","금융상품숙지의무 6개 강의 확인","신상품/ETF 관련 안내 확인","펀드/파생 자격증 보수교육 관련 안내 확인","보험대리점 자격증 보수교육 관련 안내 확인"]
+  },
+  peaktimer:{
+    name:"신규 채용 피크타이머 온보딩", maint:false,
+    cheer:`iM뱅크와 함께하게 되신 것을 환영합니다! 영업점 업무 전 필요한 교육을 아래에서 차근차근 확인해 주세요. 처음의 낯섦은 금세 익숙해집니다. 응원하겠습니다.`,
+    intro:`피크타이머가 이수해야 하는 강의는 금융상품숙지의무 강의 1(수신 상품 + 신용카드 상품)과 신상품 교육뿐입니다. ETF 상품은 판매하지 않으므로 ETF 교육은 필요하지 않으며, 자격증 기반 상품판매권한 대상자가 아니므로 자격증 보수교육 안내도 표시하지 않습니다.`,
+    alert:null,
+    actions:["visit","product_pt","newprod_pt"],
+    checklist:["방문판매인력교육 이수","금융상품숙지의무 강의 1(수신 상품+신용카드 상품) 이수","신상품 상품숙지교육 확인"]
+  },
+  transfer:{
+    name:"본부부서 → 영업점 신규 전입직원 온보딩", maint:true,
+    cheer:`영업점에서의 새로운 시작을 응원합니다! 본부와는 결이 다른 창구 업무가 처음엔 낯설게 느껴질 수 있지만, 아래 판매권한 항목만 미리 챙겨두면 첫날이 한결 수월해집니다. 새로운 자리에서의 활약을 기대하겠습니다.`,
+    intro:`본부부서에서는 필요성을 체감하기 어렵지만, 영업점 전입 후에는 상품판매권한이 창구 업무와 직접 연결됩니다. 발령 전 또는 영업점 배치 직후 아래 항목을 먼저 확인하세요.`,
+    alert:null,
+    actions:["visit","product","etf","fund","insurance"],
+    checklist:["방문판매인력교육 이수 여부 확인","금융상품숙지의무 6개 강의 확인","신상품/ETF 관련 안내 확인","펀드/파생 자격증 보수교육 관련 안내 확인","보험대리점 자격증 보수교육 관련 안내 확인"]
+  }
+};
+
+const FAQ = [
+ {q:"왜 금융상품숙지의무교육을 들어야 하나요?",a:"금융상품 판매 전 상품의 주요 내용, 위험, 판매 유의사항을 숙지하기 위한 교육입니다. 관련 법령과 내부통제기준에 따라 교육을 이수하지 않은 직원은 계약체결 권유 관련 업무 수행이 제한될 수 있습니다."},
+ {q:"방문판매인력교육과 금융상품숙지의무는 다른 교육인가요?",a:"다릅니다. 방문판매인력교육은 방문판매 시 준수사항과 금지행위 등을 중심으로 하는 교육이고, 금융상품숙지의무는 실제 판매할 금융상품의 내용과 특성을 숙지하기 위한 교육입니다."},
+ {q:"금융상품숙지의무 강의는 몇 개로 구분되나요?",a:"총 6개로 구분됩니다. 수신+신용카드, 신탁+퇴직연금+일임형 ISA, 펀드, 개인여신+기업여신, 외환+자금운용, 방카슈랑스입니다."},
+ {q:"신상품이 나오면 기존 금융상품숙지의무만 들으면 되나요?",a:"아닙니다. 특정 신상품이 출시되면 해당 신상품 숙지의무교육을 별도로 수강해야 할 수 있습니다."},
+ {q:"ETF상품을 판매하려면 별도 교육이 필요한가요?",a:"ETF상품 판매를 위해서는 ETF상품 숙지의무교육을 별도로 수강해야 할 수 있습니다."},
+ {q:"교육을 들으면 상품판매권한이 바로 등록되나요?",a:"일부 교육은 RPA를 통해 NEXPIA 시스템에 자동 등록될 예정입니다. 자동 등록은 매일 9시부터 1시간 단위로 처리됩니다. 다만 방카슈랑스 교육, 방문판매인력교육 등은 자동 등록 대상이 아닐 수 있으므로 실제 권한 반영 여부를 확인해야 합니다."},
+ {q:"교육을 들었는데 상품판매 시 오류가 뜨면 어떻게 하나요?",a:"“상품교육 미이수” 오류가 뜨는 경우, 해당 교육이 자동 등록 대상인지 확인하고, 필요 시 상품 담당자 또는 관련 부서에 개별 내선 연락해야 합니다."},
+ {q:"복직직원은 왜 자격증 보수교육을 미리 확인해야 하나요?",a:"복직 후 영업점에서 바로 상품 판매 업무를 수행할 수 있기 때문입니다. 자격증 보수교육 미이수 시 창구에서 판매자격이 없는 것으로 표시되어 거래 진행이 불가능할 수 있습니다."},
+ {q:"본부부서에서 영업점으로 전입하는 직원도 자격증 보수교육을 확인해야 하나요?",a:"필요합니다. 본부부서 근무 중에는 해당 상품을 판매할 일이 없어 판매권한을 사용할 일이 없지만, 영업점 전입 후에는 펀드 · 파생상품 · 보험상품 판매권한을 위해 자격증 보수교육을 들어야 합니다."},
+ {q:"신입행원도 펀드/파생/보험대리점 자격증 보수교육을 들어야 하나요?",a:"일반적으로 신입행원은 해당 자격증을 보유하고 있지 않으므로 자격증 보수교육 대상 안내를 표시하지 않습니다. 자격증 취득 후 별도 기준에 따라 자격증 보수교육 대상이 될 수 있습니다."},
+ {q:"보험대리점 자격증 보수교육은 언제 들어야 하나요?",a:"생명보험, 손해보험, 제3보험은 자격증 등록일로부터 2년 경과 시마다 자격증 보수교육 대상이 될 수 있으며, 2년이 되는 날로부터 6개월 이내에 자격증별로 각각 이수해야 한다는 취지로 안내합니다. 실제 대상 여부는 보험 관련 시스템에서 확인해야 합니다."},
+ {q:"복직과 동시에 방카슈랑스 담당자가 되면 어떻게 해야 하나요?",a:"생명보험, 손해보험, 제3보험 자격증 보수교육 대상 여부를 사전에 확인하고, 방카 담당자로 지정되기 전에 필요한 자격증 보수교육을 이수해야 합니다."},
+ {q:"교육비는 지원되나요?",a:"개별 수강 후 i-HR 시스템에서 기타 교육비용 신청 경로를 통해 신청할 수 있습니다. 수료증과 결제내역 첨부가 필요합니다."}
+];
+
+const EXAMPLES = [
+ {label:"복직자인데 무엇부터 확인해야 하나요?", kw:"복직"},
+ {label:"ETF 판매하려면 어떤 교육이 필요한가요?", kw:"ETF"},
+ {label:"펀드 자격증 보수교육은 어디서 듣나요?", kw:"펀드 자격증 보수교육"},
+ {label:"보험대리점 자격증 보수교육 대상인지 어떻게 확인하나요?", kw:"보험대리점"},
+ {label:"교육비 신청은 어디서 하나요?", kw:"교육비"},
+ {label:"상품교육 미이수 오류가 뜨면 어떻게 하나요?", kw:"미이수"}
+];
+
+// 상품 담당자 (예시 양식 — 실제 부서·내선은 최신 내부 안내로 입력/수정)
+const CONTACTS = [
+ {name:"수신 · 신용카드 상품", note:"강의 1", dept:"지정 필요", tel:""},
+ {name:"신탁 · 퇴직연금 · 일임형 ISA", note:"강의 2", dept:"지정 필요", tel:""},
+ {name:"펀드", note:"강의 3", dept:"지정 필요", tel:""},
+ {name:"개인여신 · 기업여신 상품", note:"강의 4", dept:"지정 필요", tel:""},
+ {name:"외환 · 자금운용 상품", note:"강의 5", dept:"지정 필요", tel:""},
+ {name:"방카슈랑스", note:"강의 6", dept:"지정 필요", tel:""},
+ {name:"신상품 · ETF 상품숙지교육", note:"권한 등록 관련", dept:"지정 필요", tel:""},
+ {name:"로그인 · 통합인증 문의", note:"NEXPIA 접속", dept:"인재개발팀", tel:"6533 · 2404 · 2416"}
+];
+
+/* ============================================================
+   상태 & 헬퍼
+   ============================================================ */
+let current = null;
+const $ = (s,el=document)=>el.querySelector(s);
+const $$ = (s,el=document)=>Array.from(el.querySelectorAll(s));
+const esc = (s)=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function scrollToId(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+/* ============================================================
+   대상자 선택 → 렌더
+   ============================================================ */
+function selectTarget(key){
+  current = key;
+  const T = TARGETS[key];
+  $("#guide").classList.remove("hidden");
+  $("#selName").textContent = T.name;
+
+  // 자격증 보수교육/수강방법 섹션 표시 제어
+  const showMaint = T.maint;
+  $$(".nav-maint").forEach(a=>a.classList.toggle("hidden", !showMaint));
+  $$(".nav-maint-sec").forEach(s=>s.classList.toggle("hidden", !showMaint));
+  $$(".nav-guide").forEach(a=>a.classList.remove("hidden"));
+  $$(".nav-maint").forEach(a=>{ if(!showMaint) a.classList.add("hidden"); });
+
+  // 피크타이머 전용 강의 안내 노트
+  $("#ptProductNote").classList.toggle("hidden", key!=="peaktimer");
+
+  // 격려 메시지 + intro
+  let introHtml = "";
+  if(T.cheer){
+    introHtml += `<div class="cheer"><span class="ci">💚</span><div>`+
+      `<div class="ct">응원 메시지</div><p>${esc(T.cheer)}</p></div></div>`;
+  }
+  introHtml += `<div class="intro-note">${esc(T.intro)}</div>`;
+  if(T.alert){
+    introHtml += `<div class="alert"><span class="ai">!</span><div>${esc(T.alert)}</div></div>`;
+  }
+  $("#introZone").innerHTML = introHtml;
+
+  renderActions(T);
+  renderChecklist(T);
+
+  // FAQ 매번 초기화
+  $("#faqInput").value = "";
+  filterFAQ("");
+
+  // 가이드 상단으로 이동
+  setTimeout(()=>scrollToId("guide"), 60);
+  history.replaceState(null,"","#sec-action");
+}
+
+function renderActions(T){
+  const wrap = $("#actionGrid");
+  wrap.innerHTML = T.actions.map((aKey,i)=>{
+    const d = A[aKey];
+    const title = typeof d.title==="function" ? d.title(current) : d.title;
+    const desc  = typeof d.desc==="function"  ? d.desc(current)  : d.desc;
+    const why   = typeof d.why==="function"   ? d.why(current)   : d.why;
+    const risk  = typeof d.risk==="function"  ? d.risk(current)  : d.risk;
+    const cid = `ac-${aKey}-${i}`;
+
+    const btns = d.btns.map((b,bi)=>{
+      if(b.type==="why")  return `<button class="btn why" data-acc="${cid}-why" aria-expanded="false">왜 필요한가요?</button>`;
+      if(b.type==="risk") return `<button class="btn risk" data-acc="${cid}-risk" aria-expanded="false">미이수 시 어떻게 되나요?</button>`;
+      return `<button class="btn ${b.primary?'primary':''}" data-scroll="${b.to}">${esc(b.label)}</button>`;
+    }).join("");
+
+    const whyPanel = why ? `<div class="panel why" id="${cid}-why"><div class="panel-inner"><span class="pl">왜 필요한가요?</span>${esc(why)}</div></div>` : "";
+    const riskPanel = risk ? `<div class="panel risk" id="${cid}-risk"><div class="panel-inner"><span class="pl">미이수 시 어떻게 되나요?</span>${esc(risk)}</div></div>` : "";
+
+    return `<article class="acard ${d.cls}">
+      <span class="badge ${d.cls}">${esc(d.badge)}</span>
+      <h4>${esc(title)}</h4>
+      <p class="a-desc">${esc(desc)}</p>
+      <div class="a-btns">${btns}</div>
+      ${whyPanel}${riskPanel}
+    </article>`;
+  }).join("");
+}
+
+/* ============================================================
+   체크리스트 (localStorage, 대상자별 구분)
+   ============================================================ */
+function ckey(){ return "imbank_checklist_"+current; }
+function loadCheck(){
+  try{ return JSON.parse(localStorage.getItem(ckey())||"{}"); }catch(e){ return {}; }
+}
+function saveCheck(state){
+  try{ localStorage.setItem(ckey(), JSON.stringify(state)); }catch(e){}
+}
+function renderChecklist(T){
+  const state = loadCheck();
+  const wrap = $("#checklistItems");
+  wrap.innerHTML = T.checklist.map((label,i)=>{
+    const on = !!state[i];
+    return `<label class="ch-item">
+      <input type="checkbox" data-ci="${i}" ${on?"checked":""}/>
+      <span class="ch-box"></span>
+      <span class="ch-label">${esc(label)}</span>
+    </label>`;
+  }).join("");
+  updateProgress();
+}
+function updateProgress(){
+  const boxes = $$('#checklistItems input[type=checkbox]');
+  const total = boxes.length;
+  const done = boxes.filter(b=>b.checked).length;
+  $("#chProgress").textContent = `${done} / ${total} 완료`;
+  $("#chBar").style.width = total? (done/total*100)+"%" : "0%";
+}
+
+/* ============================================================
+   FAQ 렌더 & 검색
+   ============================================================ */
+function renderFAQ(){
+  $("#faqList").innerHTML = FAQ.map((f,i)=>`
+    <div class="faq-item" data-text="${esc((f.q+' '+f.a).toLowerCase())}">
+      <button class="faq-q" data-faq="${i}" aria-expanded="false">
+        <span class="qn">Q${i+1}</span><span>${esc(f.q)}</span><span class="chev">▾</span>
+      </button>
+      <div class="faq-a" id="faq-a-${i}"><div class="inner">${esc(f.a)}</div></div>
+    </div>`).join("");
+  $("#qChips").innerHTML = EXAMPLES.map(e=>`<button class="qchip" data-kw="${esc(e.kw)}">${esc(e.label)}</button>`).join("");
+}
+function filterFAQ(kw){
+  const tokens = kw.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  let shown = 0;
+  $$("#faqList .faq-item").forEach(item=>{
+    const text = item.dataset.text;
+    const match = tokens.length===0 || tokens.every(t=>text.includes(t));
+    item.style.display = match ? "" : "none";
+    if(match) shown++;
+  });
+  $("#faqEmpty").style.display = shown? "none":"block";
+}
+
+/* ============================================================
+   스크롤 스파이 (네비 활성화)
+   ============================================================ */
+function initSpy(){
+  const links = $$("#stepNav a");
+  const map = {};
+  links.forEach(a=>map[a.dataset.sec]=a);
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        links.forEach(l=>l.classList.remove("active"));
+        const a = map[en.target.id];
+        if(a) a.classList.add("active");
+      }
+    });
+  },{rootMargin:"-55% 0px -42% 0px"});
+  ["target-select","sec-action","sec-product","sec-maintenance","sec-howto","sec-faq"]
+    .forEach(id=>{ const el=document.getElementById(id); if(el) obs.observe(el); });
+}
+
+/* ============================================================
+   이벤트 바인딩
+   ============================================================ */
+document.addEventListener("click",(e)=>{
+  // 대상 카드
+  const tc = e.target.closest(".target-card");
+  if(tc){ selectTarget(tc.dataset.target); return; }
+
+  // 스크롤 이동
+  const sb = e.target.closest("[data-scroll]");
+  if(sb){ scrollToId(sb.dataset.scroll); return; }
+
+  // ACTION 아코디언
+  const acc = e.target.closest("[data-acc]");
+  if(acc){
+    const panel = document.getElementById(acc.dataset.acc);
+    const open = acc.getAttribute("aria-expanded")==="true";
+    acc.setAttribute("aria-expanded", String(!open));
+    panel.style.maxHeight = open ? "0" : (panel.scrollHeight+40)+"px";
+    return;
+  }
+
+  // FAQ 아코디언
+  const fq = e.target.closest("[data-faq]");
+  if(fq){
+    const a = document.getElementById("faq-a-"+fq.dataset.faq);
+    const open = fq.getAttribute("aria-expanded")==="true";
+    fq.setAttribute("aria-expanded", String(!open));
+    a.style.maxHeight = open ? "0" : (a.scrollHeight+24)+"px";
+    return;
+  }
+
+  // 예시 질문 칩
+  const chip = e.target.closest(".qchip");
+  if(chip){
+    const kw = chip.dataset.kw || chip.textContent;
+    $("#faqInput").value = kw;
+    filterFAQ(kw);
+    scrollToId("sec-faq");
+    return;
+  }
+
+  // 대상 다시 선택
+  if(e.target.id==="reselect"){
+    current=null;
+    $("#guide").classList.add("hidden");
+    $$(".nav-guide").forEach(a=>a.classList.add("hidden"));
+    scrollToId("target-select");
+    history.replaceState(null,"","#target-select");
+    return;
+  }
+  // 인쇄
+  if(e.target.id==="printBtn"){ window.print(); return; }
+
+  // 맨 위로
+  if(e.target.id==="toTop"){ window.scrollTo({top:0,behavior:"smooth"}); return; }
+
+  // FAQ 초기화
+  if(e.target.id==="faqClear"){ $("#faqInput").value=""; filterFAQ(""); return; }
+
+  // 접속 매뉴얼 열기
+  if(e.target.closest("#navManual") || e.target.closest("#manualOpenTop")){
+    openManual(); return;
+  }
+  // 접속 매뉴얼 닫기 (버튼 또는 오버레이 배경 클릭)
+  if(e.target.closest("#manualClose") || e.target.id==="manualModal"){
+    closeManual(); return;
+  }
+  // 상품 담당자 모달 열기/닫기
+  if(e.target.closest("#contactOpen")){ openModal("#contactModal"); return; }
+  if(e.target.closest("#contactClose") || e.target.id==="contactModal"){
+    closeModal("#contactModal"); return;
+  }
+});
+
+// 모달 공통 제어
+function openModal(sel){
+  const m=$(sel); m.classList.remove("hidden");
+  document.body.style.overflow="hidden"; m.scrollTop=0;
+}
+function closeModal(sel){
+  $(sel).classList.add("hidden"); document.body.style.overflow="";
+}
+function openManual(){ openModal("#manualModal"); }
+function closeManual(){ closeModal("#manualModal"); }
+document.addEventListener("keydown",(e)=>{
+  if(e.key!=="Escape") return;
+  ["#manualModal","#contactModal"].forEach(sel=>{
+    if(!$(sel).classList.contains("hidden")) closeModal(sel);
+  });
+});
+
+// 상품 담당자 렌더
+function renderContacts(){
+  const head = `<div class="contact-row head"><span>상품 구분</span><span>담당 부서</span><span>내선번호</span></div>`;
+  const rows = CONTACTS.map(c=>`
+    <div class="contact-row">
+      <div class="cr-name">${c.name}${c.note?`<span>${c.note}</span>`:""}</div>
+      <div class="cr-dept">${c.dept}</div>
+      <div class="cr-tel ${c.tel?"":"todo"}">${c.tel||"지정 필요"}</div>
+    </div>`).join("");
+  $("#contactTable").innerHTML = head + rows;
+}
+
+// 체크박스
+document.addEventListener("change",(e)=>{
+  const cb = e.target.closest('#checklistItems input[type=checkbox]');
+  if(cb){
+    const state = loadCheck();
+    state[cb.dataset.ci] = cb.checked;
+    saveCheck(state);
+    updateProgress();
+  }
+});
+
+// FAQ 검색
+$("#faqInput").addEventListener("input",(e)=>filterFAQ(e.target.value));
+
+// 맨 위로 버튼 표시
+window.addEventListener("scroll",()=>{
+  $("#toTop").classList.toggle("show", window.scrollY>400);
+});
+
+// 초기화
+renderFAQ();
+renderContacts();
+initSpy();
+</script>
+</body>
+</html>
